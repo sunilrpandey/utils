@@ -38,7 +38,7 @@ one can also link a lcoal file \
 
 #### Section link \
 When you want to use link at multiple places. create reference for that in bottom of .md  \
-[common ref] : www.github.com \
+[common ref] : https://www.markdownguide.org/cheat-sheet/ \
 [common ref2] : www.google.com 
 
 and write link as above but replacing {link} by [common ref] \
