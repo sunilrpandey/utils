@@ -48,6 +48,7 @@ use add_library instead of add_executable to create static library
 add_library(test_static_lib STATIC
             ${SOURCES})
 ```
+( BTW default for add_library is static library only )
 
 now install the library at location e.g. /usr/lib 
 ```
