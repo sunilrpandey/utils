@@ -81,8 +81,6 @@ softbreak using double space at the end of the file
 ### Emoji
 Git hub supports emoji, check emoji ref
 
-```
-
 ## References
 [Github Basic Syntax help](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)   
 [Emoji CheatSheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)   
