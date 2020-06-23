@@ -186,5 +186,20 @@ If you want to contribute to some project
 5. Code owner reviews the pull request and your changes and accept/deny the changes.
 6. If accepted changes goes to owners code base.
 
+## How to ignore few files to be added to git
+Create .gitignore file in local repo and add file/direactory names e.g.
+
+``` 
+	*.log
+	vscode/
+```
+what if want exception for a file e.g. release.log when *.log is to be ignored, add belwo to .gitignore
+```
+!release.log
+```
+what if you want to force add some ignored file
+> git add -f debug.log 
+
+
 ## TODO
 1. rebase and merge
