@@ -197,9 +197,16 @@ what if want exception for a file e.g. release.log when *.log is to be ignored, 
 ```
 !release.log
 ```
-what if you want to force add some ignored file
+what if you want to force add some ignored file, -f to rescue.
 > git add -f debug.log 
 
 
 ## TODO
 1. rebase and merge
+
+## References
+[Pro Git book](https://git-scm.com/book/en/v2)
+
+[kbroman git_tutorial](https://kbroman.org/github_tutorial/)
+
+[Atlassian Git Tutorial](https://www.atlassian.com/git/tutorials/install-git)
