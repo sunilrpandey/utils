@@ -4,24 +4,55 @@
 1. create a folder for your program
 2. create CMakeLists.txt and write 
     
-    ` cmake_minimum_required(VERSION, 3.10) `
-    ` project(hello_cmake VERSION 1.0.0)`
+    ```
+    cmake_minimum_required(VERSION, 3.10) 
+    project(hello_cmake VERSION 1.0.0)
     
-    > hello_cmake is program name
+    here `hello_cmake` is program name
+    ```
+
+    add compiler options if required  e.g. for C++ 17 code 
+    > set(CMAKE_CXX_FLAGS "--std=c++17")
+
+    append thread options if requiered
+    > set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAG} -pthread")
+
+    One can also use find_package to load thread library and link it to output lib/exe
+    ```
+    find_package (Threads REQUIRED)
+    add_executable( ${exe_name} ${src_files} )
+    target_link_libraries(${exe_name}
+        ${CMAKE_THREAD_LIBS_INIT}
+    )
+    
+    ```
+ 
 3. create 'build' directory
-4. go to build directory and run
+4. Build target
 
-    ` cmake ..`
+    go to build directory and run
 
+    ```
+    cmake .. 
+
+    # you can configure build type
+    cmake -DCMAKE_BUILD_TYPE=Debug .. 
+    ```
+    You can also to in source build, not recommended though, creates mess of build files/directories. For this you need to run below command from source file(where CMakeLists.txt exits)
+    ```
+    cmake .
+    ```
+    
     this will create following file/directory
     * CMakeCache.txt  
     * CMakeFiles  
     * Makefile  
     * cmake_install.cmake
-5. now check Makefile file (which is make file for linux)  and run	
-
-    ` make hello_world` 
-
+5. make necessary build/make call  
+    > cmake --build .  
+    
+    Now, On Linux system check Makefile file (which is make file )  and run	
+    > make hello_world
 6. run executable 
 
     `./hello_world`
@@ -29,7 +60,7 @@
 ## 2. Use files from another directory include/src
 Say we want to use a class and its implementation saved in include/src. We need to add headers in **include**  using "include_directories", cpp in **src** using ~~**set**~~ or ~~**file(GLOB..)**~~ and update add_executable 
 
-> include_directories(include)
+> include_directories(${PROJECT_SOURCE_DIR/include)
 
 Now, include source files using saving it in a variable say SOURCES
 > set ( SOURCES hello_include.cpp src/test.cpp)
@@ -114,3 +145,8 @@ include_directories(~/cmake_tut/04_static_lib/include)
 add_executable(demo_test_static_lib demo_static_lib.cpp)
 target_link_libraries(demo_test_static_lib ${PROJECT_LINK_LIBS})
 ```
+
+## References
+* [Modern CMake](https://gitlab.com/CLIUtils/modern-cmake)
+* [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
+* [CMake Examples](https://github.com/ttroy50/cmake-examples) 

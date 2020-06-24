@@ -1,6 +1,59 @@
 # Extra Notes
 
-### Please note !!
+## Use cases
+### Config debug and release build
+```
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
+SET(PROJ_NAME "myproject")
+PROJECT(${PROJ_NAME})
+
+SET(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE)
+
+IF(DEFINED CMAKE_BUILD_TYPE AND CMAKE_VERSION VERSION_GREATER "2.8")
+  SET_PROPERTY(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS  ${CMAKE_CONFIGURATION_TYPES})
+ENDIF()
+
+SET(${PROJ_NAME}_PATH_INSTALL "/opt/project"      CACHE PATH "This directory contains installation Path")
+SET(CMAKE_DEBUG_POSTFIX "d")
+
+INSTALL(TARGETS ${PROJ_NAME}
+    DESTINATION  "${${PROJ_NAME}_PATH_INSTALL}/lib/${CMAKE_BUILD_TYPE}/"
+    )
+```
+And this is how you will execute and find libraries in debug/release folder
+```
+$ cd /myproject/build
+$ cmake -DCMAKE_BUILD_TYPE=Debug ..
+$ make
+$ sudo make install
+$ cmake _DCMAKE_BUILD_TYPE=Release ..
+$ make
+$ sudo make install
+```
+### Create shared/static lib from command line
+Set BUILD_SHARED_LIBS to False/True for static shared library,
+```
+ cmake .. -DBUILD_SHARED_LIBS=ON
+ ```
+ offcourse you always have an option to include STATIC/SHARED in add_library() function
+
+ ### Set C++ standard globally 
+ ```
+ 	set(CMAKE_C_STANDARD 99)
+	set(CMAKE_CXX_STANDARD 11)
+```
+this will add compile option for g++ (-std=c++11)
+
+### Make particular c++ standard as prerequisite
+
+Set the variable CMAKE_CXX_STANDARD_REQUIRED on
+	```
+	set_target_properties(lib_name PROPERTIES 
+			CXX_STANDARD 11
+			CXX_STANDARD_REQUIRED ON
+	)
+	```
+## Please note !!
 1. Below section shows anyone consuming library has access to directory it was built into
 ```
 add_library(lib_name ${SOURCES})
@@ -90,10 +143,22 @@ endforeach
 ```
 
 > Also allowed are break(), continue() 
-
+### macro 
+similar to function executed in current context
+```
+macro(setVariable VAR_VALUE)
+	set(${VAR_VALUE} "newValue")
+endmacro(setVariable)
+```
+This is how above macros can be used 
+```
+setVariable(my_var)
+message(STATUS "Set Value : ${my_var})
+```
 ## Todo
 
 We can add version number using config file
 configure_file(TutorialConfig.h.in TutorialConfig.h) 
+Makefile for Test Suite
 
 
