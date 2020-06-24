@@ -24,6 +24,7 @@ Have email id ?? you are good to go
 1. Create github account
 2. Install it first and verify its version
 ```
+	sudo apt-get install git
 	git --version
 	Output : git version 2.17.1
 ```
@@ -40,6 +41,8 @@ and verify
 One can list other config information
 > 	git config --list
 4. Set up ssh on your computer, it helps to avoid entering credential on every push and may be some other occasion
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" 
+eval "$(ssh-agent -s)"
 
 ## Setup local and remote repository/server
 ### 1. First step 
