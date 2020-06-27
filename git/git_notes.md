@@ -80,6 +80,10 @@ Check the status i.e. what files are marked to be added, what are deleted etc
 Commit changes with appropriate message  
 > git commit -m "message"
 
+> git commit --amend // add to previous commit, no comment changed
+
+> git commit --amend -m "update message" // add to previous commit, no comment  
+
 Now push it to appropriate branch on remote 
 > git push origin master
 
