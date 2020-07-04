@@ -87,15 +87,15 @@ Other image options
 - tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
 
 ## Few use cases
-### Show images list
-> docker images
-### Rename image
+### Show me the images  
+> docker 
+### What's in the name, Huge!! Rename it please.
 Change name,tag or both
 ```
 docker tag hw:latest hw:v1//give new name
 docker tag hw:latest hello:v2
 ```
-### Remove image 
+### Yuck, don't like this image, Remove it. 
 > docker rmi image_name:tag //cam use image id as well
 
 > docker rmi <image_id> // use -f for force delete 
@@ -105,7 +105,7 @@ but you can not remove if a container of this image is running, sometime not as 
 If you see many untagged images and you need to clean up, run 
 > docker image prune 
 
-### Hey, I want to share my docker image to my friend
+### Hey, I want to share my docker image to my friend! 
 1. Save image to tar fil my hare, other guy need to load it see the image in images list(seen using `docker images`)
 ```
 docker save <image_name> -o taranme
@@ -113,5 +113,76 @@ docker load -i <taranme>
 ```
 
 2. Upload it to registry
+- Rename image to docker_username/imagename:tag using
+    > docker tag <imageid> sunilrpandey(username at docker)/ubuntuvim:V1
+- Log in to hub.docker.com
+- Push image to docker hub 
 
-### 
+    ` docker push docker_username/imagename:tag `
+- Run container on the image to verify
+    
+    ` docker run -it docker_username/imagename:tag `
+
+    Generally in org level docker registry, it should be like
+    ```
+    docker push image_name
+    where image_name should be similar to registry.org.com/<user_name>/<image_name>:tag to make it unique
+    ```
+
+### Cand I copy file from host machine to container's file system? why not!!
+> docker cp  files_dirs_to_copy container_name:/bin/path
+
+### I have done so much after running container, Wish I container like this when I ran container. 
+### Get image from the running container 
+> docker commit <cont_name>  // will change container into image // imageplusexe, if you copy exe in container
+
+### Run existing container and get result from host machine
+> docker exec -it container_name  bash 
+
+for example can give ps in container and show output on host  
+
+### Open multiple executables on multiple termial, need multiples terminals to execute in container
+Can be done in two steps
+- Get image running on container in the background (-d works here for this)   
+    > docker run -d -it <image_id>
+- Note down the container id using      
+    `docker ps` 
+    
+    and run below command to run from multiple terminals, which in turn will open multiple containers to run executables
+    
+    ` docker exec -it <container_id> bash` 
+    
+## Create Docker image from existing image(Dockerfile)
+### Get Base image
+Go to docker hub and search base image with appropriate tag on which you would like put layer of your image
+for example, for me I chose dashing tag of ros image. Now use below Keys to create your own Dockerfile and build it to have your own image.
+
+Listing few here,rest to follow  
+```
+FROM <base_image> //e.g. FROM ros:dashing
+COPY . /app       // copy files/dir in current dir to /app on docker filesystem
+WORKDIR /app   //workign directory on container FS
+CMD python hello.py  // run this command on container 
+MAINTAINER
+RUN   // to run a command e.g. sudo apt update/install etc
+EXPOSE
+ENV
+ADD ~ COPY, copy is preferred  
+```
+### How Dockerfile is built to create image?
+```
+docker build . // will built but no image name or tag
+docker build -t <image_name> . // build and give a name/tag
+```
+building dockerfile logs step wise status, Go through and make changes in Dockerfile if required.
+
+## Misc
+### Other docker run options
+-p 8080:80 maps network service port 80 in the container to 8080 on our host system.
+
+-v /full/path/to/html/directory:/usr/share/nginx/html:ro maps the directory holding our web page to the required location in the image. The ro field instructs Docker to mount it in read-only mode. It’s best to pass Docker the full paths when specifying host directories.
+
+-d detaches the container from our command line session. Here we dont want container to be interative
+
+
+
