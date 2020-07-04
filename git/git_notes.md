@@ -59,6 +59,7 @@ If you haven't connected your local repository to a remote server so far, add an
 Verify remote alias and urls by running
 ```
 git remote //will show origin or <remote_name>
+
 git remote -v // List all currently configured remote names and respective urls
 ```
 
@@ -72,19 +73,28 @@ Take latest code, make directory updated
 > git pull origin master ( optional when history is creating issues --allow-unrelated-histories (is)
 
 Make changes and add your file/directory to be uploaded  
-> git add <file1> <file2> ..
+```
+git add _file1_ _file2_ .. OR
+git add . 	// add every changes down under
+```
 
 Check the status i.e. what files are marked to be added, what are deleted etc
 > git status
 
 Commit changes with appropriate message  
-> git commit -m "message"
+```
+git commit -m "message"
 
-> git commit --amend // add to previous commit, no comment changed
+git commit --amend // add to previous 	commit, no comment changed
 
-> git commit --amend -m "update message" // add to previous commit, no comment  
+git commit --amend -m "update message" // add to previous commit, no comment  
 
-Now push it to appropriate branch on remote 
+git commit // will prompt you to add multiline comment
+
+git commit -a // add and multiline comment in one go
+```
+
+Now push it to appropriate branch on remote , origin is actually a pointer/ref to remote 
 > git push origin master
 
 ### .. and thats it
