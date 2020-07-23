@@ -1,12 +1,17 @@
 # Git
+[ ] [ Handy git commands ](#cmds)
 
-## Handy git commands
+[ ] [ what is git ](#whatisgit)
+[ ] [ Basic Features ](#feature)
+
+## <a name='cmds'> Handy git commands </a>
 - git clone <repo_url> 
+- git clone <repo_url> -b <branch_name>  // clone a particular branch
 - .. more to add
 
-## what is git ??
+## <a name='whatisgit'> what is git ?? </a>
 Git is one of the best version control tools that is available in the present market.
-### Features
+### <a name='feature'> Features </a>
 * Provides strong support for non-linear development.
 * Distributed repository model.
 * Super-fast and efficient performance.
