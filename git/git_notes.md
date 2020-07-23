@@ -244,11 +244,9 @@ what if want exception for a file e.g. release.log when *.log is to be ignored, 
 what if you want to force add some ignored file, -f to rescue.
 > git add -f debug.log 
 
-## <a name=squashcommits>How to squash your commits</a>
-[ ] 
-
 ## TODO
-1. rebase and merge
+## <a name=squashcommits>How to squash your commits</a>
+
 
 ## References
 [Pro Git book](https://git-scm.com/book/en/v2)
