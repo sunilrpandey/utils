@@ -1,14 +1,14 @@
 # Git
-[ ] [ Handy git commands ](#cmds)
+[ ] [Handy Git Commands](#cmds)
 
-[ ] [ what is git ](#whatisgit)
-[ ] [ Basic Features ](#feature)
+[ ] [what is git](#whatisgit) \
+[ ] [Setup](#setup) \
+[ ] [Repo Setup](#reposetup) \
+[ ] [Change n Push](#fullflow)\
+[ ] [What is Pull Request](#pullreq)
 
-## <a name='cmds'> Handy git commands </a>
-- git clone <repo_url> 
-- git clone <repo_url> -b <branch_name>  // clone a particular branch
-- .. more to add
-
+[ ] [Ignore files/dirs to add](#fullflow)
+ 
 ## <a name='whatisgit'> what is git ?? </a>
 Git is one of the best version control tools that is available in the present market.
 ### <a name='feature'> Features </a>
@@ -24,7 +24,7 @@ Have email id ?? you are good to go
 
 ## Few easy steps to get going
 
-## Git Setup
+## <a name=setup>Git Setup</a>
 
 1. Create github account
 2. Install it first and verify its version
@@ -49,7 +49,7 @@ One can list other config information
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com" 
 eval "$(ssh-agent -s)"
 
-## Setup local and remote repository/server
+## <a name=reposetup>Setup local and remote repository/server</a>
 ### 1. First step 
 Create repository on github  
 ### 2. For, local project to upload on remote repository
@@ -73,7 +73,7 @@ If you have to work on a project already uploaded to repository
 ```
 git clone <repo_url>
 ```
-### 4. Make changes and push it to repository
+### <a name=fullflow>4. Make changes and push it to repository</a>
 Take latest code, make directory updated 
 > git pull origin master ( optional when history is creating issues --allow-unrelated-histories (is)
 
@@ -104,7 +104,12 @@ Now push it to appropriate branch on remote , origin is actually a pointer/ref t
 
 ### .. and thats it
 
-## More Options
+## <a name='cmds'> Handy git commands </a>
+
+### clone 
+- git clone <repo_url> 
+- git clone <repo_url> -b <branch_name>  // clone a particular branch
+- .. more to add
 
 ### Add 
 ```
@@ -157,12 +162,13 @@ Display logs based on requirement granularity
 - git log --graph // git log if you want to see the classic git branch timeline view
 - git log --oneline
 - git log --color --oneline --decorate=no --graph
+git log --graph --decorate --pretty=oneline --abbrev-commit
 ```
 
 ### branch
 Generally we dont work on master branch, but we create a feature branch, update our changes and merge it to branch
 ```
-- git branch 
+- git branch // gives list of branch 
 - git branch -a // to list all the remote branches as well
 - git checkout <branch_name> 
 - git checkout -b <branch_name> // if you want to create and switch to a new branch.
@@ -172,29 +178,45 @@ git push origin --delete <branch_name> // Delete a branch on your remote reposit
 - git branch --set-upstream-to=origin/<branch> master
 
 ```
-### Reset
+### Reset/Revert
 Reset local repository and point your local master branch to latest history fetched from remote server
 ```
 git reset --hard origin/master<or branch>
 git reset -- <filename> // revert a file
 git reset <:mode:> <:COMMIT:> // mode can be --hard or --soft
+git checkout -- <filename> to revert file // reset a file
+Discard all local changes to all files permanently
+git reset --hard
+git reset HEAD <file>
 ```
 
 ### stash
 ``` 
-- git stash // Save changes that you don’t want to  commit immediately.
+Discard all local changes, but save them for possible re-use later, changes that you don’t want to  commit immediately.
+- git stash 
 - git stash in your working directory. 
 - git stash apply if you want to bring your saved changes back.
 - git stash pop // to get latest stashed changes
 ```
 
 ### merge
-git merge <:branch_you_want_to_merge:>
+Merge the branch with current branch and commit in one go
+> git merge <:branch_you_want_to_merge:> 
 
+Please dont commit after merge, I need to check if there is any conflict present. 
+> git merge --no-commit --no-ff 
+
+
+
+### clean 
+git clean -df 
+
+### submodule
+git submodule update --init --recursive
 
 ## Miscellaneous
 
-### Pull request
+### <a name=pullreq>Pull request</a>
 Pull request is raised to request your changes go live/main_code whether it is by same user from a new branch to master branch or by contributor to code owner. 
  - create another branch, make changes, add, commit and push 
  - Now to go git hub, you will see pull request agianst new branch
@@ -208,7 +230,7 @@ If you want to contribute to some project
 5. Code owner reviews the pull request and your changes and accept/deny the changes.
 6. If accepted changes goes to owners code base.
 
-## How to ignore few files to be added to git
+## <a name=ignore>How to ignore few files/dir to be added to git</a>
 Create .gitignore file in local repo and add file/direactory names e.g.
 
 ``` 
@@ -222,6 +244,8 @@ what if want exception for a file e.g. release.log when *.log is to be ignored, 
 what if you want to force add some ignored file, -f to rescue.
 > git add -f debug.log 
 
+## <a name=squashcommits>How to squash your commits</a>
+[ ] 
 
 ## TODO
 1. rebase and merge
