@@ -157,8 +157,5 @@ message(STATUS "Set Value : ${my_var})
 ```
 ## Todo
 
-We can add version number using config file
-configure_file(TutorialConfig.h.in TutorialConfig.h) 
-Makefile for Test Suite
-
-
+* We can add version number using config file (TutorialConfig.h.in TutorialConfig.h) 
+* Makefile for Test Suite
