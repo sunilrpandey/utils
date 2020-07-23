@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 # Git
 [ ] [Handy Git Commands](#cmds)
+=======
+# Git //updated to test
+[ ] [ Handy git commands ](#cmds)
+>>>>>>> fd1e04e38245b5ea30d1fc82836af5cf2c106691
 
 [ ] [what is git](#whatisgit) \
 [ ] [Setup](#setup) \
