@@ -7,7 +7,7 @@
 - [ ] [What is Pull Request](#pullreq) 
 - [ ] [Handy Git Commands](#cmds)
 - [Clone](#clone) , [Add](#add),[rm](#remove) [Stash](#stash), [Commit](#commit) ,  [Push](#push) , [Pull](#pull) , [Merge](#merge)
-- [Status](#status), [Reset](#reset) , [Log](#log), [Diff](#diff) , 
+- [Status](#status), [Reset](#reset) , [Log](#log), [Diff](#diff) , [Blame](#blame)
 - [Branch](#branch) , [Submodule](#submodule) , [Clean](#clean), [Fetch](#fetch)
 
 
@@ -181,7 +181,11 @@ Display logs based on requirement granularity
 - git log --color --oneline --decorate=no --graph
 - git log --graph --decorate --pretty=oneline --abbrev-commit
 ```
-
+### <a name=blame>blame</a>
+To know the history of a file
+```
+	git blame <file_name>
+```
 ### <a name=branch>branch</a>
 Generally we dont work on master branch, but we create a feature branch, update our changes and merge it to branch
 ```
