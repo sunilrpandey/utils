@@ -1,13 +1,25 @@
 # Git
-[ ] [Handy Git Commands](#cmds)
+- [ ] [what is git](#whatisgit)
+- [ ] [Setup](#setup)
+	- [Setup local and remote repository](#reposetup)
+	- [Clone the repository and add your input](#cloneit) 
+- [ ] [Change Pipeline](#fullflow)
+- [ ] [What is Pull Request](#pullreq) 
+- [ ] [Handy Git Commands](#cmds)
+- [Clone](#clone) , [Add](#add), [Stash](#stash), [Commit](#commit) ,  [Push](#push) , [Pull](#pull) , [Merge](#merge)
+- [Status](#status), [Reset](#reset) , [Log](#log), [Diff](#diff) , 
+- [Branch](#branch) , [Submodule](#submodule) , [Clean](#clean) 
 
-[ ] [what is git](#whatisgit) \
-[ ] [Setup](#setup) \
-[ ] [Repo Setup](#reposetup) \
-[ ] [Change n Push](#fullflow)\
-[ ] [What is Pull Request](#pullreq)
 
-[ ] [Ignore files/dirs to add](#fullflow)
+## Tags
+
+- [ ] [Version your code, Tag it ](#tag)
+- [ ] [List](#listtag), [Create](#createtag), [Push](pushtag), [Delete](#deletetag)
+- [ ] [Get tagged Code](#taggedcode)
+- [ ] [Create branch from existing tag](#brnachfromtag)
+
+## Misc Usage
+- [ ] [Ignore files/dirs to add](#fullflow)
  
 ## <a name='whatisgit'> what is git ?? </a>
 Git is one of the best version control tools that is available in the present market.
@@ -38,13 +50,14 @@ Have email id ?? you are good to go
 	git config --global user.name <user_name>
 	git config --global user.email <email>
 ```
-and verify
+		and verify
 ```
 	git config --global user.name
 	git config --global user.email
 ```
-One can list other config information
-> 	git config --list
+		One can list other config information
+
+		git config --list
 4. Set up ssh on your computer, it helps to avoid entering credential on every push and may be some other occasion
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com" 
 eval "$(ssh-agent -s)"
@@ -68,7 +81,7 @@ git remote //will show origin or <remote_name>
 git remote -v // List all currently configured remote names and respective urls
 ```
 
-### 3. For, Copy the repository and add your input
+### 3. <a name=cloneit>For, Copy the repository and add your input</a>
 If you have to work on a project already uploaded to repository
 ```
 git clone <repo_url>
@@ -82,20 +95,17 @@ Make changes and add your file/directory to be uploaded
 git add _file1_ _file2_ .. OR
 git add . 	// add every changes down under
 ```
-
+<a name=status></a>
 Check the status i.e. what files are marked to be added, what are deleted etc
-> git status
+> git status\
+> git status -u    // to see complete path of files, not only folders 
 
 Commit changes with appropriate message  
-```
+```sh
 git commit -m "message"
-
 git commit --amend // add to previous 	commit, no comment changed
-
 git commit --amend -m "update message" // add to previous commit, no comment  
-
 git commit // will prompt you to add multiline comment
-
 git commit -a // add and multiline comment in one go
 ```
 
@@ -106,12 +116,12 @@ Now push it to appropriate branch on remote , origin is actually a pointer/ref t
 
 ## <a name='cmds'> Handy git commands </a>
 
-### clone 
+### <a name=clone>clone</a> 
 - git clone <repo_url> 
 - git clone <repo_url> -b <branch_name>  // clone a particular branch
 - .. more to add
 
-### Add 
+### <a name=add>Add</a>
 ```
 - add all or one file_name
 - git add . // to add all the files in current directory 
@@ -120,12 +130,12 @@ Now push it to appropriate branch on remote , origin is actually a pointer/ref t
 - git rm --cached test_repo.txt // if added by mistake
 
 ```
-### Commit
+### <a name=commit>Commit</a>
 ``` 
 git commit -m "message"
 git commit // will  open text box to enter commment, useful for multilien commment
 ``` 
-### Push
+### <a name=push>Push</a>
 Send changes to the master or specific branch to your remote repository
 Note - origin is an alias on your system for a particular remote repository. It's not actually a property of that repository.
 ```
@@ -140,7 +150,7 @@ Download objects and refs from remote repository for master branch
 
 `git fetch origin master`
 
-### Pull 
+### <a name=pull>Pull </a>
 Pull (Fetch and merge) changes on the remote server to your working directory:
 ``` 
 git pull
@@ -148,7 +158,7 @@ git pull origin master //To bring all changes from remote repository to local re
 
 ```
 
-### Diff 
+### <a name=diff>Diff</a>
 View all the merge conflicts, View the conflicts against the base file, Preview changes, before merging
 ```
 git diff, 
@@ -156,7 +166,7 @@ git diff --base <filename>,
 git diff <sourcebranch> <targetbranch>
 ```
 
-### log
+### <a name=log>log</a>
 Display logs based on requirement granularity
 ``` 
 - git log --graph // git log if you want to see the classic git branch timeline view
@@ -165,7 +175,7 @@ Display logs based on requirement granularity
 git log --graph --decorate --pretty=oneline --abbrev-commit
 ```
 
-### branch
+### <a name=branch>branch</a>
 Generally we dont work on master branch, but we create a feature branch, update our changes and merge it to branch
 ```
 - git branch // gives list of branch 
@@ -178,7 +188,7 @@ git push origin --delete <branch_name> // Delete a branch on your remote reposit
 - git branch --set-upstream-to=origin/<branch> master
 
 ```
-### Reset/Revert
+### <a name=reset>Reset/Revert</a>
 Reset local repository and point your local master branch to latest history fetched from remote server
 ```
 git reset --hard origin/master<or branch>
@@ -190,7 +200,7 @@ git reset --hard
 git reset HEAD <file>
 ```
 
-### stash
+### <a name=stash>stash</a>
 ``` 
 Discard all local changes, but save them for possible re-use later, changes that you don’t want to  commit immediately.
 - git stash 
@@ -199,7 +209,7 @@ Discard all local changes, but save them for possible re-use later, changes that
 - git stash pop // to get latest stashed changes
 ```
 
-### merge
+### <a name=merge>merge</a>
 Merge the branch with current branch and commit in one go
 > git merge <:branch_you_want_to_merge:> 
 
@@ -208,10 +218,10 @@ Please dont commit after merge, I need to check if there is any conflict present
 
 
 
-### clean 
+### <a name=clean>clean </a>
 git clean -df 
 
-### submodule
+### <a name=submodule>submodule</a>
 git submodule update --init --recursive
 
 ## Miscellaneous
@@ -230,7 +240,48 @@ If you want to contribute to some project
 5. Code owner reviews the pull request and your changes and accept/deny the changes.
 6. If accepted changes goes to owners code base.
 
-## <a name=ignore>How to ignore few files/dir to be added to git</a>
+
+## <a name=tag> Tag your code </a>
+ Tag is simply a "pointer" to a certain commit (not a branch). Tag has no relationship with branch. It is way to version your code when you reach certain milestone.
+ ### <a name=listtag>List tags</a>
+ ```
+ git tag
+ git tag -l "ver.*"
+ ```
+ ### <a name=createtag>Create Tag</a>
+ ```
+ git tag <tagname> <commit_id>(optional) //if not present will take HEAD of curretn branch
+ git tag -a <tag_name> // will open editor to add meta data
+ git tag -a <tag_name> -m "enter metadata for the tag/version"
+ ```
+ ### <a name=pushtag>Push tags to remote branch</a>
+	git push origin <tag_name> 
+ If you have created multiple tags and want to push all of it 
+
+	git push origin --tags
+
+### <a name=deletetag>delete git tags</a>
+Delete local tags
+
+	git tag -d <tag_name>
+Delete remote tag
+
+	git push origin :refs/tags/<tag_name>
+
+You can checkout `tag` as branch
+
+### <a name=taggedcode>Get tagged Code </a>
+	git checkout <tag_name>
+
+This puts the repo in a detached `HEAD` state. This means any change made will not update the tag. They will create a new detached commit. This new detached commit will not be part of any branch and will only be reachable directly by the commits SHA hash. \
+So its good to create a branch 
+
+	git checkout -b <branch_name>
+
+### <a name=brnachfromtag>Create branch from existing tag</a>
+	git checkout -b <new_branch_name> <existing_tag_name>
+  
+ ## <a name=ignore>How to ignore few files/dir to be added to git</a>
 Create .gitignore file in local repo and add file/direactory names e.g.
 
 ``` 
