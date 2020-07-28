@@ -6,9 +6,9 @@
 - [ ] [Change Pipeline](#fullflow)
 - [ ] [What is Pull Request](#pullreq) 
 - [ ] [Handy Git Commands](#cmds)
-- [Clone](#clone) , [Add](#add), [Stash](#stash), [Commit](#commit) ,  [Push](#push) , [Pull](#pull) , [Merge](#merge)
+- [Clone](#clone) , [Add](#add),[rm](#remove) [Stash](#stash), [Commit](#commit) ,  [Push](#push) , [Pull](#pull) , [Merge](#merge)
 - [Status](#status), [Reset](#reset) , [Log](#log), [Diff](#diff) , 
-- [Branch](#branch) , [Submodule](#submodule) , [Clean](#clean) 
+- [Branch](#branch) , [Submodule](#submodule) , [Clean](#clean), [Fetch](#fetch)
 
 
 ## Tags
@@ -41,21 +41,22 @@ Have email id ?? you are good to go
 1. Create github account
 2. Install it first and verify its version
 ```
-	sudo apt-get install git
-	git --version
-	Output : git version 2.17.1
+	apt-get install git
+	
+	git --version	
+	=> Output : git version 2.17.1
 ```
 3. Configure username and email as commmit will need it
 ```
 	git config --global user.name <user_name>
 	git config --global user.email <email>
 ```
-		and verify
+And verify
 ```
 	git config --global user.name
 	git config --global user.email
 ```
-		One can list other config information
+One can list other config information
 
 		git config --list
 4. Set up ssh on your computer, it helps to avoid entering credential on every push and may be some other occasion
@@ -77,7 +78,6 @@ If you haven't connected your local repository to a remote server so far, add an
 Verify remote alias and urls by running
 ```
 git remote //will show origin or <remote_name>
-
 git remote -v // List all currently configured remote names and respective urls
 ```
 
@@ -88,7 +88,8 @@ git clone <repo_url>
 ```
 ### <a name=fullflow>4. Make changes and push it to repository</a>
 Take latest code, make directory updated 
-> git pull origin master ( optional when history is creating issues --allow-unrelated-histories (is)
+
+	git pull origin master ( optional when history is creating issues --allow-unrelated-histories
 
 Make changes and add your file/directory to be uploaded  
 ```
@@ -97,8 +98,9 @@ git add . 	// add every changes down under
 ```
 <a name=status></a>
 Check the status i.e. what files are marked to be added, what are deleted etc
-> git status\
-> git status -u    // to see complete path of files, not only folders 
+
+	git status\
+	git status -u    // to see complete path of files, not only folders 
 
 Commit changes with appropriate message  
 ```sh
@@ -110,25 +112,29 @@ git commit -a // add and multiline comment in one go
 ```
 
 Now push it to appropriate branch on remote , origin is actually a pointer/ref to remote 
-> git push origin master
+
+	git push origin master
 
 ### .. and thats it
 
 ## <a name='cmds'> Handy git commands </a>
 
 ### <a name=clone>clone</a> 
-- git clone <repo_url> 
-- git clone <repo_url> -b <branch_name>  // clone a particular branch
-- .. more to add
+```sh
+git clone <repo_url> 
+git clone <repo_url> -b <branch_name>  // clone a particular branch
+```
 
 ### <a name=add>Add</a>
 ```
-- add all or one file_name
+add all or one file_name
 - git add . // to add all the files in current directory 
 - git add <filename>
-- git add -p
-- git rm --cached test_repo.txt // if added by mistake
-
+- git add -p (for chunks)
+```
+### <a name=remove>rm</a>
+```
+git rm --cached test_repo.txt // if added by mistake
 ```
 ### <a name=commit>Commit</a>
 ``` 
@@ -141,14 +147,15 @@ Note - origin is an alias on your system for a particular remote repository. It'
 ```
 - git push origin master
 - git push origin <branch_name>
+
 Push all branches to your remote repository
 - git push --all origin
 
 ```
-### Get latest code 
+### <a name=fetch>Get latest code </a>
 Download objects and refs from remote repository for master branch
 
-`git fetch origin master`
+	git fetch origin master
 
 ### <a name=pull>Pull </a>
 Pull (Fetch and merge) changes on the remote server to your working directory:
@@ -172,7 +179,7 @@ Display logs based on requirement granularity
 - git log --graph // git log if you want to see the classic git branch timeline view
 - git log --oneline
 - git log --color --oneline --decorate=no --graph
-git log --graph --decorate --pretty=oneline --abbrev-commit
+- git log --graph --decorate --pretty=oneline --abbrev-commit
 ```
 
 ### <a name=branch>branch</a>
@@ -182,10 +189,16 @@ Generally we dont work on master branch, but we create a feature branch, update 
 - git branch -a // to list all the remote branches as well
 - git checkout <branch_name> 
 - git checkout -b <branch_name> // if you want to create and switch to a new branch.
-- git branch -d <branch_name> // Delete the feature branch from local repository, you can also use the -D flag which is synonymous with --delete --force instead of -d. This will delete the branch regardless of its merge status.
-git push origin --delete <branch_name> // Delete a branch on your remote repository
 
 - git branch --set-upstream-to=origin/<branch> master
+
+Delete the feature branch from local repository, you can also use the -D flag which is synonymous with --delete --force instead of -d. This will delete the branch regardless of its merge status.
+
+- git branch -d <branch_name> 
+
+Deletes a branch on your remote repository
+- git push origin --delete <branch_name> 
+
 
 ```
 ### <a name=reset>Reset/Revert</a>
@@ -195,6 +208,7 @@ git reset --hard origin/master<or branch>
 git reset -- <filename> // revert a file
 git reset <:mode:> <:COMMIT:> // mode can be --hard or --soft
 git checkout -- <filename> to revert file // reset a file
+
 Discard all local changes to all files permanently
 git reset --hard
 git reset HEAD <file>
@@ -211,18 +225,20 @@ Discard all local changes, but save them for possible re-use later, changes that
 
 ### <a name=merge>merge</a>
 Merge the branch with current branch and commit in one go
-> git merge <:branch_you_want_to_merge:> 
+
+	git merge <:branch_you_want_to_merge:> 
 
 Please dont commit after merge, I need to check if there is any conflict present. 
-> git merge --no-commit --no-ff 
+
+	git merge --no-commit --no-ff 
 
 
 
 ### <a name=clean>clean </a>
-git clean -df 
+	git clean -df 
 
 ### <a name=submodule>submodule</a>
-git submodule update --init --recursive
+	git submodule update --init --recursive
 
 ## Miscellaneous
 
