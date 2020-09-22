@@ -128,7 +128,7 @@ add_executable(demo_test_static_lib demo_static_lib.cpp)
 target_link_libraries(demo_test_static_lib ${PROJECT_LINK_LIBS})
 ```
 
-### Use shared library
+## 5. Use shared library
 1. Identify library to be used, and link directory 
 ```
 set(PROJECT_LINK_LIBS libtest_static_lib.a)
@@ -146,6 +146,11 @@ add_executable(demo_test_static_lib demo_static_lib.cpp)
 target_link_libraries(demo_test_static_lib ${PROJECT_LINK_LIBS})
 ```
 
+## Misc: Add C++ Preprocessor Macro
+Add below line to CMakeLists.txt
+```
+add_definitions(-DLOG_ENABLED)
+```
 ## References
 * [Modern CMake](https://gitlab.com/CLIUtils/modern-cmake)
 * [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
