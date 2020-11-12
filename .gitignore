@@ -3,7 +3,7 @@ build/
 ly-build/
 .vscode/
 bin/
-bazel-bazel/
-bazel-bin/
-bazel-out/
-bazel-testlogs/
+bazel-bazel/*
+bazel-bin/*
+bazel-out/*
+bazel-testlogs/*
