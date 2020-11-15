@@ -60,8 +60,16 @@ One can list other config information
 
 		git config --list
 4. Set up ssh on your computer, it helps to avoid entering credential on every push and may be some other occasion
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com" 
-eval "$(ssh-agent -s)"
+
+	```
+	ssh-keygen -t rsa -b 4096 -C "your_email@example.com"	 
+	eval "$(ssh-agent -s)"
+
+	ssh-add ~/.ssh/id_rsa
+	```
+	..and copy it and add it to github's ssh keys.
+	BTW you can copy using 
+	> xcopy -selection clipboard < ~/.ssh/id_rsa.pub
 
 ## <a name=reposetup>Setup local and remote repository/server</a>
 ### 1. First step 
