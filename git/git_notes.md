@@ -107,7 +107,7 @@ git add . 	// add every changes down under
 <a name=status></a>
 Check the status i.e. what files are marked to be added, what are deleted etc
 
-	git status\
+	git status		// will show folders only which are changed
 	git status -u    // to see complete path of files, not only folders 
 
 Commit changes with appropriate message  
