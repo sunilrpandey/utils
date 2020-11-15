@@ -83,5 +83,8 @@ if target is in same BUILD file, skip //
 ```
 
 ### Visibility 
-    If library or referenced binary is in separte directory, set its visibility to foler it is being referenced, say here main is directory and is  
-    > visibility = ["//main:__pkg__"]
+If library or referenced binary is in separte directory, set its visibility to folder it is being referenced, say in our example `util_lib` created in `hello-lib` is being used is `hello-dep`. So make `util_lib` visible in hello-dep, for this add below code to cc_library of util_lib 
+
+    visibility = ["//main:__pkg__"]
+
+You can include headers relative to WORKSPACE
