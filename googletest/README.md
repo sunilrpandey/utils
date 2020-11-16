@@ -186,3 +186,75 @@ int main(int argc, char **argv) {
 ```
 The ::testing::InitGoogleTest() function parses the command line for googletest flags, and removes all recognized flags. This allows the user to control a test program's behavior via various flags, which we'll cover in the AdvancedGuide. You must call this function before calling RUN_ALL_TESTS(), or the flags won't be properly initialized.
 
+## Parameterized Tests
+Write a Parameterized Fixture class derived from ::testing::TestWithParam<T>
+```cpp
+class ParameterizedTestFixture :public ::testing::TestWithParam<int> {
+protected:
+    Foo foo;
+};
+```
+Now, let us test a test case with an assertion in it.
+```cpp
+TEST_P(ParameterizedTestFixture, DoesXYZ) {
+    int p = GetParam();
+    ASSERT_FALSE(foo.doesXYZ(p));
+}
+```
+Call our use-case with multiple inputs.
+```cpp
+INSTANTIATE_TEST_CASE_P(
+        FooTests,
+        ParameterizedTestFixture,
+        ::testing::Values(
+                1, 711, 1989, 2013
+        ));
+```
+### Write Parameterized tests based on existing fixture
+Assume we have above TestFixture written and we may want to reuse its underlying Foo class.
+```cpp
+class TestFixtureToBeParameterized : public ::testing::Test
+{
+protected:
+  Foo foo;
+};
+
+class ParametrizedTestFixtureBasedOnFixture :
+  public TestFixtureToBeParameterized,
+  public ::testing::WithParamInterface<int> {
+};
+```
+### Pass multiple parameters to the same test case?
+You can not pass more than one argument but definitely std::pair or std::tuple
+```cpp
+class MultipleParametersTests :public       ::testing::TestWithParam<std::tuple<int, bool>> {
+protected:
+    Foo foo;
+};
+TEST_P(MultipleParametersTests, DoesXYZ) {
+    bool expected = std::get<1>(GetParam());
+    int p = std::get<0>(GetParam());
+    ASSERT_EQ(expected, foo.DoesXYZ(p));
+}
+
+INSTANTIATE_TEST_CASE_P(
+        LeapYearTests,
+        LeapYearMultipleParametersTests,
+        ::testing::Values(
+                std::make_tuple(7, false),
+                std::make_tuple(2001, false),
+                std::make_tuple(1996, true),
+                std::make_tuple(1700, false),
+                std::make_tuple(1600, true)));
+```
+
+## Points
+We should not call tests with different param in loop because if one fails it will not allow following tests to run.
+A good unittest should have only one logical assertion - some exceptions as always apply
+## Reference
+https://github.com/google/googletest/blob/master/googletest/docs/primer.md
+
+For Parameterized Tests
+
+https://www.sandordargo.com/blog/2019/04/24/parameterized-testing-with-gtest
+
