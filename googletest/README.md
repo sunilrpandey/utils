@@ -250,6 +250,7 @@ INSTANTIATE_TEST_CASE_P(
 
 ## Points
 We should not call tests with different param in loop because if one fails it will not allow following tests to run.
+
 A good unittest should have only one logical assertion - some exceptions as always apply
 ## Reference
 https://github.com/google/googletest/blob/master/googletest/docs/primer.md
