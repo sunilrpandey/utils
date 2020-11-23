@@ -28,5 +28,5 @@ Step 2. Add key to it
 Step 3. Add it to your github account
 
 Go to github web(https://github.com/settings/keys), Go to new ssh key and paste in key edit box, also give title for better understanding
-> xcopy -selection clipboard < ~/.ssh/id_rsa.pub
+> xclip -selection clipboard < ~/.ssh/id_rsa.pub
 
