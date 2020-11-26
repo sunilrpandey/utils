@@ -20,23 +20,9 @@
 - [ ] [Create branch from existing tag](#brnachfromtag)
 
 ## Misc Usage
-- [ ] [Ignore files/dirs to add](#fullflow)
-- [ ] [Renamme Branch Name](#renamebranch)
+- [ ] [Ignore files/dirs to add](#ignore)
+- [ ] [Rename Branch](#renamebranch)
 
-## <a name = renamebranch>Rename branch </a>
-Go to branch to be renamed
-
-	git checkout <old_name>
-
-Rename branch 
-
-	git branch -m <new_name>
-
-If you had already pushed it to remote repository
-```sh
-git push origin -u <new_name>
-git push origin --delete <old_name>
- ```
 ## <a name='whatisgit'> what is git ?? </a>
 Git is one of the best version control tools that is available in the present market.
 ### <a name='feature'> Features </a>
@@ -338,6 +324,21 @@ what if want exception for a file e.g. release.log when *.log is to be ignored, 
 ```
 what if you want to force add some ignored file, -f to rescue.
 > git add -f debug.log 
+
+### <a name = renamebranch>Rename branch </a>
+Go to branch to be renamed
+
+	git checkout <old_name>
+
+Rename branch 
+
+	git branch -m <new_name>
+
+If you had already pushed it to remote repository
+```sh
+git push origin -u <new_name>
+git push origin --delete <old_name>
+ ```
 
 ## TODO
 ## <a name=squashcommits>How to squash your commits</a>
