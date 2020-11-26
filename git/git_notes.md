@@ -11,6 +11,7 @@
 - [Branch](#branch) , [Submodule](#submodule) , [Clean](#clean), [Fetch](#fetch)
 
 
+
 ## Tags
 
 - [ ] [Version your code, Tag it ](#tag)
@@ -20,7 +21,22 @@
 
 ## Misc Usage
 - [ ] [Ignore files/dirs to add](#fullflow)
- 
+- [ ] [Renamme Branch Name](#renamebranch)
+
+## <a name = renamebranch>Rename branch </a>
+Go to branch to be renamed
+
+	git checkout <old_name>
+
+Rename branch 
+
+	git branch -m <new_name>
+
+If you had already pushed it to remote repository
+```sh
+git push origin -u <new_name>
+git push origin --delete <old_name>
+ ```
 ## <a name='whatisgit'> what is git ?? </a>
 Git is one of the best version control tools that is available in the present market.
 ### <a name='feature'> Features </a>
