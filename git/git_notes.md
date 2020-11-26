@@ -89,6 +89,9 @@ Verify remote alias and urls by running
 ```
 git remote //will show origin or <remote_name>
 git remote -v // List all currently configured remote names and respective urls
+//other commands to know about remote/origin 
+git remote show origin
+git config --get remote.origin.url // to know the url
 ```
 
 ### 3. <a name=cloneit>For, Copy the repository and add your input</a>
@@ -325,7 +328,7 @@ what if want exception for a file e.g. release.log when *.log is to be ignored, 
 what if you want to force add some ignored file, -f to rescue.
 > git add -f debug.log 
 
-### <a name = renamebranch>Rename branch </a>
+## <a name = renamebranch>Rename branch </a>
 Go to branch to be renamed
 
 	git checkout <old_name>
