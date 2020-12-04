@@ -21,6 +21,7 @@
 - Peek Definition : Alt+F12 
 - Open Definition to the side : Ctrl+K F12 
 - Show References : Shift+F12 
+- Run  - Ctrl + Shift + D
 
 - Go back / forward : Alt+ ← / → 
 - Select all occurences of Find match : Alt+Enter 
