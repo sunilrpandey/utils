@@ -85,6 +85,8 @@ If you haven't connected your local repository to a remote server so far, add an
 > git remote add origin <repo_url>  or 
 > git remote add <remote_name> <repo_url> (If you want remote name other than origin)
 
+repo_url is nothing but url we generally use to clone from github
+
 Verify remote alias and urls by running
 ```
 git remote //will show origin or <remote_name>
@@ -175,6 +177,10 @@ Pull (Fetch and merge) changes on the remote server to your working directory:
 ``` 
 git pull
 git pull origin master //To bring all changes from remote repository to local repository
+
+git pull <repo_url> 
+
+Use above to download the code, add remote origin to setup local/remote (checked with https://.....something.git)
 
 ```
 
