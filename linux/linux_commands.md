@@ -202,6 +202,13 @@ Use multiple grep, | (pipe)) & -E option to get AND behavior, below output conta
 - df -iv
 - du diskspace used by specified file/dir
 
+## Misc 
+- tail -n 7 filename // last 7 lines , default is 10
+- tail -3 filename // last 3
+- tail -v filename // preceded by file name
+- tail -q file1 file2 // not precided by filename
+- tail +25 filename // lines from 25th line till end 
+
 ## Litte theory notes
 Unix file system
 disk space alloted to unix file system are made up of blocks
