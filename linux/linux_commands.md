@@ -116,7 +116,27 @@ which does not have all the pattern
     grep -l "string" filename
     grep -l -r "string" dir
 
+### Shows only matches string(generally greps shows whole line)
+Shows all the strings starts with "start" and end with "end" and anything in between.
+    
+    grep -o "start.*end" filename
+
+### Shows position of the match in the line 
+
+    grep -o -b "pattern" filename
+
+### Shows the line number while displaying the output (-n)
+
+    grep -n "string" filename
 ### REGEX and GREP
+- ".ello" - Any character followed by "ello"
+
+- Zero or more occurrence (\*), the pattern ‘1\*’ matches zero or more ‘1’.
+
+- One or more occurrence (\\+) of previous character
+
+- zero or one occurance of previous character(\\?)
+
 ```
     ? The preceding item is optional and matched at most once.
     * The preceding item will be matched zero or more times.
@@ -137,7 +157,30 @@ Set environemnt variable
     grep -c "pattern" filename
     grep -v -c "pattern" filename
 
+### Counting the empty lines (^$)
 
+    grep -c "^$" filename
+
+### Grep OR/AND/NOT
+
+    grep 'pattern1\|pattern2' filename
+    grep -E 'pattern1|pattern2' filename
+
+No AND operator but can be achieved using
+
+    grep -E 'pattern1.*pattern2' filename
+
+First and Second in that order only
+
+    $ grep -E 'First.*Secpmd' employee.txt 
+
+First and Second in any order only
+
+    $ grep -E 'First.*Secpmd | Secpmd.*First' employee.txt filename
+
+Use multiple grep, | (pipe)) & -E option to get AND behavior, below output contains "First" and "Second" in the smae line
+
+    grep -E "First" filename | grep -E "Second"
 ## Checking Diskspace 
 - df 
 - df -iv
