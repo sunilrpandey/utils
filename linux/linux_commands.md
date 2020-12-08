@@ -102,6 +102,10 @@ alias python='python3'
     
         grep -C 2 "Example" demo_text
 
+    - Combination 
+
+        grep grep grep.txt -A 2 -B 1        
+
 ### Invert match using -v 
 Outputs all the lines that does not have "string"
 
@@ -181,6 +185,10 @@ First and Second in any order only
 Use multiple grep, | (pipe)) & -E option to get AND behavior, below output contains "First" and "Second" in the smae line
 
     grep -E "First" filename | grep -E "Second"
+
+(egrep ~ grep -E) A combination of grep when you include "first" or "second" but ignore "third" 
+    
+    egrep 'first|second' filename | grep -v third
 ## Checking Diskspace 
 - df 
 - df -iv
