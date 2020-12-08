@@ -118,8 +118,11 @@ which does not have all the pattern
 ### Display only the filenames which matches the given pattern (-l)
 
     grep -l "string" filename
-    grep -l -r "string" dir
+    grep -l -r "string" dir    
 
+### Exclude directory to search
+
+    grep -r --exclude-dir='.git' "string" .
 ### Shows only matches string(generally greps shows whole line)
 Shows all the strings starts with "start" and end with "end" and anything in between.
     
@@ -189,6 +192,11 @@ Use multiple grep, | (pipe)) & -E option to get AND behavior, below output conta
 (egrep ~ grep -E) A combination of grep when you include "first" or "second" but ignore "third" 
     
     egrep 'first|second' filename | grep -v third
+
+### Combine find/grep, grep "text" from the found files
+
+    find . -iname '*file*' | xargs -0 grep pattern
+
 ## Checking Diskspace 
 - df 
 - df -iv
