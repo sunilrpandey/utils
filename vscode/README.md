@@ -1,4 +1,14 @@
 # VS Code
+## Misc
+**Ctrl + M  : Toggle Use of Tab Key for Setting Focus/and entring space**
+
+## VSCode Extensions 
+- Python, C/C++, Docker by Microsoft
+- GitLens by EricAmodio
+- Zuul Job Browser
+- Pylance by Microsoft
+
+
 ## keyboard Shortcuts
 - Show hover : Ctrl+K Ctrl+I 
 - Toggle Panel(Terminal etc) : Ctrl + J
