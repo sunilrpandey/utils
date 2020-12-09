@@ -1,0 +1,96 @@
+
+More to come
+- with_items
+
+- handlers
+- notify <handler_name>
+
+> for single line
+
+syntax check
+register/debug
+{{}} for variable names
+
+environment variables
+lineinfile
+environmetn block
+
+variabls in section 
+variables in file vars/file
+
+include_vars: {{item}}
+with_first_found: 
+
+return_output.rc/[rc-status] //because. does not support -
+
+secret key 
+encrypt/decrypt
+ansible-vault
+
+when 
+changed_when
+failed_when
+ignore_errors
+
+tags
+
+handlers/
+import_tasks hanlder/1.yml
+
+import_playbook:app.yml
+
+roles
+multiple roles and how htey are used in playbook
+
+override variables in a playbook
+
+
+
+
+Ansible commands with no explanation
+
+- cd ansible_working_dir
+- create inventory file to list servers
+=- inventory file 
+[example]
+107.20.122.56
+- Ping a server
+$ansible -i inventory example -m ping <username, e.g.centos>
+
+adhoc command
+$ansible -i inventory example -a "free -h" -u centos
+$ansible -i inventory example -a "date" -u centos
+
+in above commands default module is 'command' so can also be written as 
+$ansible -i inventory example -m command -a "date" -u centos
+
+//execute command on hosts under 'multi'
+$ansible -i inventory multi -a "hostname" // please refer git_repos/ansible/inventory
+these commands runs parally on all machines 
+$ansible -i inventory multi -a "df -h" 
+if you want it to run one after otehr use
+$ansible -i inventory multi -a "df -h" -f 1
+$ansible -i inventory multi -a "date"
+
+Get all the info about a host (db in this case)
+$ansible -i inventory db -m setup
+
+$ansible -i inventory multi -b -m yum -a "name=ntp state=present" //-b means root, not sure though  
+$ansible -i inventory multi --become -m yum -a "name=ntp state=present" 
+$ansible -i inventory multi --ask-become-pass -m yum -a "name=ntp state=present"
+$ansible -i inventory multi -k -m yum -a "name=ntp state=present"  
+
+$ansible -i inventory multi -k -m service -a "name=ntp state=started enabled=yes"  
+$ansible -i inventory multi -b -a "service ntpd stop"  
+ref https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html#parameters
+
+$ansible -i inventory db -b -a "free -m"
+You can restrict it to one of many server group, e.g. only one in app host group
+$ansible -i inventory app -a "free -m" --limit "192.168.60.4" 
+You can use regex as well
+$ansible -i inventory app -a "free -m" --limit "*.4" 
+
+$ansible -i inventory multi -a "tail /var/log/messages | grep ansible-command | wc -l"
+we can write a shell script and run it on particular server
+$ansible -i inventory multi -b -m cron -a "name=something hour=4 job=/path/to/prog.sh"
+$ansible -i inventory multi -b -m git -a "repo=repo_url dest=/opt/app update=yes version=1.2.3"
