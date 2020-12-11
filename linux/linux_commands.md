@@ -13,6 +13,17 @@ Show only filename
 
     $ ag -g pattern
 
+## Compress file using tar
+.tar.gz is same as .tgz
+> tar -cvzf file.tar.gz testdir
+
+> tar -czvf archive.tgz *.pdf
+
+### Uncompress tar.gz
+ > tar -xzvf projects.tar.gz
+
+ > tar -xzvf projects.tar.gz -d /tmp
+
 ## find directories recursively with given name is current directory and delete them
 > find . type d -name ".git*" -exec rm -rf {} +  OR
 > find . type d -name ".git*" | xargs rm -rf 
