@@ -10,10 +10,15 @@
 
 
 ## keyboard Shortcuts
+
+- Copy path of active file : Ctrl+K P 
+- Reveal active file in Explorer : Ctrl+K R 
+- Show active file in new window/instance : Ctrl+K O 
+
+- Show preview for markdown : Ctrl + K, V
 - Show hover : Ctrl+K Ctrl+I 
 - Toggle Panel(Terminal etc) : Ctrl + J
 - Toggle Sidebar(Explorer bar etc) : Ctrl + B
-- Toggle word wrap : Alt+Z 
 - Explorer Bar : ctrl + shift + E
 
 - Extension explorer : ctrl + shift + x
@@ -48,9 +53,8 @@
 - Format document : Shift+Alt+F 
 - Format selection : Ctrl+K Ctrl+F 
 - Quick Fix : Ctrl+. 
+- Toggle word wrap : Alt+Z 
+
 
 - Focus into 1st, 2nd or 3rd editor group : Ctrl+ 1 / 2 / 3 
 
-- Copy path of active file : Ctrl+K P 
-- Reveal active file in Explorer : Ctrl+K R 
-- Show active file in new window/instance : Ctrl+K O 
