@@ -1,16 +1,15 @@
 # VS Code
-## Misc
+
+- [ ] [Keyboard shortcuts ](#shortkey)
+- [ ] [Extensions](#ext)
+- [ ] [Misc](#ext)
+
+
+## <a name = misc>Misc</a>
 **Ctrl + M  : Toggle Use of Tab Key for Setting Focus/and entring space**
 
-## VSCode Extensions 
-- Python, C/C++, Docker by Microsoft
-- GitLens by EricAmodio
-- Zuul Job Browser
-- Pylance by Microsoft
 
-
-## keyboard Shortcuts
-
+## <a name = shortkey>keyboard Shortcuts</a>
 - Copy path of active file : Ctrl+K P 
 - Reveal active file in Explorer : Ctrl+K R 
 - Show active file in new window/instance : Ctrl+K O 
@@ -58,3 +57,8 @@
 
 - Focus into 1st, 2nd or 3rd editor group : Ctrl+ 1 / 2 / 3 
 
+## <a name = ext>VSCode Extensions</a>
+- Python, C/C++, Docker by Microsoft
+- GitLens by EricAmodio
+- Zuul Job Browser
+- Pylance by Microsoft
