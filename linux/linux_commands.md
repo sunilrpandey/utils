@@ -28,12 +28,12 @@ Compress/Extract file using tar, .tar.gz is same as .tgz
 ### scp
     scp file.txt remote_username@<ip>:/remote/directory
 
-    scp -P 2322 file.txt remote_username@<ip/hostname>:/remote/directory //SSH on remote host is listening on a port other than default(22)
+    scp -P <port_no> file.txt remote_username@<ip/hostname>:/remote/directory //SSH on remote host is listening on a port other than default(22)
 
     scp -r /local/directory remote_username@<ip>:/remote/directory // for directories
 
-    scp remote_username@10.10.0.2:/remote/file.txt /local/directory
-
+    scp remote_username@<ip_address>:/remote/file.txt /local/directory
+sss
     scp user1@host1.com:/files/file.txt user2@host2.com:/files
 
     
@@ -110,3 +110,43 @@ and all the blocks  are logically divided into 4 parts
 - Super block - describes file system
 - Inode table (meta data about files)
 - Data block - actual file content
+
+### Mode of operation in VI
+- Command Mode : keys pressed are not visible,for cursor movement etc
+- Insert Mode : to insert new text etc 
+- Ex Command Mode : give commands at the command line, bottom lien of the vi screen in called command line   
+Note: Press i to go to insert mode, esc to leave insert mode and enter commmand mode
+
+vi 
+x - delete one character  
+nx - delete n characters   
+press R to override characters while typing  
+w - move characters word by word on right
+b - move characters word by word on left(backword)  
+e - go to end of the word, constant pressign move forward with cursor at end of the words  
+H, M , L : mvoe to first, mid and last line of screen  
+ctrl + f : scroll one window forward  
+ctrl + b : scroll one window backward
+
+### Enter text  
+a : shift to input mode and append text after the cursor  
+A : shift to input mode and append text at end of line  
+i : shift to input mode and append text at the cursor  
+I : shift to input mode and append text at begining of line  
+o - shift to input mode and open a new line below current line  
+O - shift to input mode and open a new line aove current line
+
+### Delete text in vi
+x - delete char at curent position  
+X - delete char to the left of  cursor  
+dw - delete a word from cursor to next space(including)  
+dd - delete current line  
+nx, ndw, ndd : delete n chars, words or lines  
+d0 - delete current line to left till begining of line from cursor  
+d$ : delete line from cursor to the end of file  
+
+### misc vi command
+. : Repeat action performed by last command  
+u : undo  
+~ : toggle character case(lower to upper and viceversa)
+ctrl + l : clear the window
