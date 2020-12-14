@@ -1,33 +1,47 @@
 # Linux Commands
 
+## Use cases
+### Combine find/grep, grep "text" from the found files
+
+    find . -iname '*file*' | xargs -0 grep pattern
+
+## Grep Commands 
+[Grep Notes](grep_commands.md)
+
 ## Basics
-### Check ubuntu version
-> lsb_release -a
+lsb_release -a  //Check ubuntu version
 
-## Ag utility - similar to grep
-Show pattern in all files underneath
+### Ag 
+$ ag pattern  // A search utility similar to grep to search pattern  
+$ ag -g pattern  //         Shows only filenames having pattern
 
-    $ ag pattern 
+### Tar
+Compress/Extract file using tar, .tar.gz is same as .tgz 
+> tar -cvzf file.tar.gz testdir  // Compress testdir to file  
+> tar -czvf archive.tgz *.pdf  // compress all multipel files to archive  
+> tar -xzvf projects.tar.gz // Uncompress  
+> tar -xzvf projects.tar.gz -d /tmp // Uncompress to /tmp
 
-Show only filename 
+### ssh
+    ssh your_username@host_ip_address
 
-    $ ag -g pattern
+### scp
+    scp file.txt remote_username@<ip>:/remote/directory
 
-## Compress file using tar
-.tar.gz is same as .tgz
-> tar -cvzf file.tar.gz testdir
+    scp -P 2322 file.txt remote_username@<ip/hostname>:/remote/directory //SSH on remote host is listening on a port other than default(22)
 
-> tar -czvf archive.tgz *.pdf
+    scp -r /local/directory remote_username@<ip>:/remote/directory // for directories
 
-### Uncompress tar.gz
- > tar -xzvf projects.tar.gz
+    scp remote_username@10.10.0.2:/remote/file.txt /local/directory
 
- > tar -xzvf projects.tar.gz -d /tmp
+    scp user1@host1.com:/files/file.txt user2@host2.com:/files
+
+    
 
 ## find directories recursively with given name is current directory and delete them
 > find . type d -name ".git*" -exec rm -rf {} +  OR
 > find . type d -name ".git*" | xargs rm -rf 
-
+c
 # files related
 - touch filename  //create new file/change modification time of exisiting file
 - cat > filename -> entrer text to filename, followed by control d
@@ -75,12 +89,6 @@ alias python='python3'
 - soft -oresult file1 file2 file3
 - cut -f 2-7 filename
 
-## Grep Commands 
-[Grep Notes](grep_commands.md)
-
-### Combine find/grep, grep "text" from the found files
-
-    find . -iname '*file*' | xargs -0 grep pattern
 
 ## Checking Diskspace 
 - df 
