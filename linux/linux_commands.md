@@ -9,8 +9,34 @@
 [Grep Notes](grep_commands.md)
 
 ## Basics
-lsb_release -a  //Check ubuntu version
+lsb_release -a  //Check ubuntu version  
+ps -i 
+curl <url> -o <filename>
+curl -I <url>
+read -t 3 -n 1
+if[$? = 0]
 
+## sed - stream editor
+cat filename | sed 's/i/I/' # replace i with I but only first in the line
+cat filename | sed 's/i/I/g' # replace all i with I, g-> global
+
+or similar 
+sed 's/i/I/g' filename >newfilename
+sed -i 's/i/I/g' filename // will modify filename itself
+sed -i 's/linux/windows/g' filename // will modify filename itself
+
+## Debug your script
+bash -x ./scriptname.sh
+will give line by line run 
+
+add on bash header only
+#! /bin/bash -x 
+
+set up region to debug
+sandwitch your problematic code between set -x and set +x
+set -x
+.problematic code
+set +x 
 ### Ag 
 $ ag pattern  // A search utility similar to grep to search pattern  
 $ ag -g pattern  //         Shows only filenames having pattern
