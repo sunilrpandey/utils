@@ -1,57 +1,74 @@
 # Ansible 
-Ansible is simple open source IT engine which automates application deployment, intra service orchestration, cloud provisioning and many other IT tools.
+Ansible is simple open source IT engine which automates application deployment, intra service orchestration, cloud provisioning and many other IT tools.  
+
 Ansible uses playbook to describe automation jobs, and playbook uses very simple language i.e. YAML. Ansible is designed for multi-tier deployment. Ansible does not manage one system at time, it models IT infrastructure by describing all of your systems are interrelated. Ansible is completely agentless which means Ansible works by connecting your nodes through ssh(by default). But if you want other method for connection like Kerberos, Ansible gives that option to you.
 
 ## How Ansible Works?
 
 Ansible works by connecting to your nodes and pushing out small programs, called "Ansible modules" to them. Ansible then executes these modules (over SSH by default), and removes them when finished. 
 
-pip3 install ansible 
-Successfully built ansible ansible-base PyYAML
-Installing collected packages: PyYAML, pycparser, cffi, six, cryptography, MarkupSafe, jinja2, pyparsing, packaging, ansible-base, ansible
-Successfully installed MarkupSafe-1.1.1 PyYAML-5.3.1 ansible-2.10.4 ansible-base-2.10.3 cffi-1.14.4 cryptography-3.2.1 jinja2-2.11.2 packaging-20.7 pycparser-2.20 pyparsing-2.4.7 six-1.15.0
+### Installation 
+pip3 install ansible   
 
-ansible --version
-ansible 2.10.3
-config file = /etc/ansible/ansible.cfg
-configured module search path = ['/home/kpit/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-ansible python module location = /home/kpit/.local/lib/python3.8/site-packages/ansible
-executable location = /home/kpit/.local/bin/ansible
-python version = 3.8.0 (default, Oct 28 2019, 16:14:01) [GCC 8.3.0]
+    Successfully built ansible ansible-base PyYAML
+    Installing collected packages: PyYAML, pycparser, cffi, six, cryptography, MarkupSafe, jinja2, pyparsing, packaging, ansible-base, ansible
 
-connect to server(create it on AWS)
-ssh centos@<ip>
+    Successfully installed MarkupSafe-1.1.1 PyYAML-5.3.1 ansible-2.10.4 ansible-base-2.10.3 cffi-1.14.4 cryptography-3.2.1 jinja2-2.11.2 packaging-20.7 pycparser-2.20 pyparsing-2.4.7 six-1.15.0
 
-Create and inventory file and
+verify installation using   
+```sh 
+  ansible --version    
+
+  ansible 2.10.3
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/kpit/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/kpit/.local/lib/python3.8/site-packages/ansible
+  executable location = /home/kpit/.local/bin/ansible
+  python version = 3.8.0 (default, Oct 28 2019, 16:14:01) [GCC 8.3.0]
+```
+### Connect to server(create it on AWS)
+`ssh centos@<ip>`
+
+### Create and inventory file to group hosts
 ```sh 
 [example]
 107.20.106.183 or webaddress 
 ```
 
-Run 
+### Run 
+You can run ad-hoc commands now
+```sh
+e.g. Ping server using ping module 
 ansible -i inventory example -m ping -u centos
-where example is groupd of server mentioned in inventory
--m for module .. here using ping module 
-- u means user
+    where example is group of servers mentioned in inventory
+    -m for module 
+    - u means user
+```
+### Config
 
 to create general config, create ansible.cfg and enter
+```sh
 [default]
 INVENTORY = inventory
 Now no need to enter inventory option, below command will work as above
+```
+## Adhoc commands
+
+```
 ansible example -m ping -u centos
 -k or --ask-pass (use key pair of userid/password)
 
-Adhoc commands
 ansible example -a "free -h" -u centos --ask-pass 
 other adhoc commands -  date
 
--m  module  to use 
--a argument for the module
---ask-pass will ask for ssh password
+-m  module  to use   
+-a argument for the module  
+--ask-pass will ask for ssh password  
+```
 
-Chapter 2
-install virtualbox
-install vagrant (vagrantup.org) get latest
+Chapter 2  
+install virtualbox  
+install vagrant (vagrantup.org) get latest  
 explore find boxes
 
 ## install a box
