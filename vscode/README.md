@@ -11,7 +11,7 @@
 
 ## <a name = shortkey>keyboard Shortcuts</a>
 - Copy path of active file : Ctrl+K P 
-- Reveal active file in Explorer : Ctrl+K R 
+- Reveal active file in File Explorer : Ctrl+K R 
 - Show active file in new window/instance : Ctrl+K O 
 
 - Show preview for markdown : Ctrl + K, V
@@ -19,6 +19,7 @@
 - Toggle Panel(Terminal etc) : Ctrl + J
 - Toggle Sidebar(Explorer bar etc) : Ctrl + B
 - Explorer Bar : ctrl + shift + E
+- Select Color Theme : Ctrl K + Ctrl T
 
 - Extension explorer : ctrl + shift + x
 - Preference(command palette) : ctrl + shift + p
