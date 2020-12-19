@@ -92,4 +92,14 @@ set -e : if error stop immediately .. genererally put on top of script
 
 a script has three 
 
+cat longfile.txt | more
 cat << _EOF_ -> all to script thill it encounters _EOF_
+
+The main difference between more and less is that less command is faster because it does not load the entire file at once and allows navigation though file using page up/down keys.  
+less longfile.txt #ok
+cat longfile.txt | less # also ok
+
+more file.txt
+cat file.txt | more
+more -10 file.txt # 10 lines per page
+more +15 file.txt # starting from 15th line
