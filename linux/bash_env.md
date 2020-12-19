@@ -55,3 +55,41 @@ Now just call memory-usage to see it
 ```sh
 $ memory-usage
 ```
+reset network manager generally in ~/bin/nr
+sudo systemctl restart network-manager 
+/usr/bin/time  
+show ~/filename.txt
+-  You can run a file by just giving its name if it is in ~/bin otherwise you may need to precede it by ~/
+you can run a command from .bashrc
+/home/linus/bin/1
+
+//sshto
+script
+#!/bin/bash
+#ssh login shorthand command 
+
+ssh -X 121.123.34."$1"
+
+ref: https://www.youtube.com/watch?v=dDyoNC33TY8&t=1770s
+
+
+So three way
+- thorugh alias
+- through funciton 
+- through little scritp in ~/bin
+
+
+upgrade - install newest version of all package  
+dist-upgrade - upgrade + handle changing dependencies  
+full-upgrade - full-upgrade performs the function of upgrade but may also remove installed packages if that is required in order to resolve a package conflict
+
+apt-get autoremove -yy
+at-get autoclean
+do scripting and put it in any folder what you see when ecoh $PATH
+
+$HOME/bin is added to PATH 
+set -e : if error stop immediately .. genererally put on top of script
+
+a script has three 
+
+cat << _EOF_ -> all to script thill it encounters _EOF_
