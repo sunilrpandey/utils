@@ -3,6 +3,7 @@
 - Command Mode : keys pressed are not visible,for cursor movement etc
 - Insert Mode : to insert new text etc 
 - Ex Command Mode : give commands at the command line, bottom lien of the vi screen in called command line   
+
 Note: Press i to go to insert mode, esc to leave insert mode and enter commmand mode
 
 ## Command Mode 
@@ -81,6 +82,7 @@ Fch : fch but backward
 tch : move to just before next 'ch' in current line 
 Tch : move to just before next 'ch' in current line  but backward
 ; : repeat search with f,F,t,T
+
 ```
 ### replace
 ```sh
@@ -88,6 +90,10 @@ Tch : move to just before next 'ch' in current line  but backward
 :n1,n2s/s1/s2/ -> replace first occurance of s1 with s2 from line n1 to n2
 :n1,n2s/s1/s2/g -> replace ALL first occurance of s1 with s2 from line n1 to n2
 :n1,n2s/s1/s2/gc -> interactively  replace ALL first occurance of s1 with s2 from line n1 to n2
+    n1 and n2 can be 
+    . - current line 
+    1 - first line 
+    $ - last line 
 :.,$s/s1/s2/gcI -> (I represents case insensitive)interactively  replace ALL first occurance of s1 with s2 from current line through the end
 ```
 Once can abort(q), break interactive(a) on getting confirmation before replacing in addition to y and n

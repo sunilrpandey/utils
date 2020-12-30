@@ -6,6 +6,8 @@ set -o pipefail
 
 
 ## Use cases
+### Get list of exports
+    $export
 ### Combine find/grep, grep "text" from the found files
 
     find . -iname '*file*' | xargs -0 grep pattern
@@ -21,14 +23,26 @@ set -o pipefail
 [Grep Notes](grep_commands.md)
 
 ## Basics
+    echo $SHELL  # to show bash type
     lsb_release -a  //Check ubuntu version  
     ps -i 
 
     curl <url> -o <filename>  
     curl -I <url>  
     read -t 3 -n 1  
+    nl filename // add line numbers to a file
+    who | tee logfile // out on terminal as well as logfile
+    cat file1 file2 | tee -a file1file2 // appe
+    
+    
     if[$? = 0]  
+    - Scripts run in their own shell
+    - to read a script and access its variable source it before using its variable, it has two ways to do this
+        source ./script.sh
+        . ./script.sh
 
+## Process
+$ ps 
 ## sed - stream editor
 ```sh
     cat filename | sed 's/i/I/' # replace i with I but only first in the line  
@@ -38,18 +52,6 @@ set -o pipefail
     sed 's/i/I/g' filename >newfilename  
     sed -i 's/i/I/g' filename // will modify filename itself  
     sed -i 's/linux/windows/g' filename // will modify filename itself  
-```
-## Debug your script
-    bash -x ./scriptname.sh //will give line by line run   
-    #! /bin/bash -x //add on bash header only
-
-We can set-up region to debug, to do this sandwitch your problematic code between set -x and set +x
-```sh
-    set -x
-    ...
-    code to debug
-    ...
-    set +x 
 ```
 ## Ag : A search utitlity
 ```sh
@@ -146,9 +148,6 @@ Here symbolic is just a directory entry containing the pathname, it does not occ
 Ref : Sumitabha das
 
 
-
-
-
 ## Alias 
 You can create alias in .bashrc for default functionality of any command, we generally do this for setting python3 as default python
 ```sh
@@ -192,6 +191,8 @@ alias python='python3'
     - tail -v filename // preceded by file name
     - tail -q file1 file2 // not precided by filename
     - tail +25 filename // lines from 25th line till end 
+
+    - more +10 -15 -s file1 file2 // 15 line after 10th, -s squeeze blank lines
 
 ## Little theory
 Unix file system: disk space alloted to unix file system are made up of blocks
