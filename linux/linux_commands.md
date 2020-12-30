@@ -1,9 +1,17 @@
 # Linux Commands
 
+## shell tricks
+set -eu // stops when error happens, undefined var is error
+set -o pipefail
+
+
 ## Use cases
 ### Combine find/grep, grep "text" from the found files
 
     find . -iname '*file*' | xargs -0 grep pattern
+    find . -type d
+    find . -type f
+    find . -mtime -2 
 
 ## Grep Commands 
 [Grep Notes](grep_commands.md)
@@ -11,6 +19,7 @@
 ## Basics
 lsb_release -a  //Check ubuntu version  
 ps -i 
+
 curl <url> -o <filename>
 curl -I <url>
 read -t 3 -n 1
@@ -73,11 +82,16 @@ c
 - cat > filename -> entrer text to filename, followed by control d
 - cat filename  -> display content
 - cat file1 file2 >> newfile // concatenate
+- cat file1 file2 // shows content of file2 immediately after file1
 
-- cp /cp -r , 
+- .. means parent directory
+
+- cp , cp -r , cp -i (interactive)
 - rm , rm -r , rm -i, rm -rf 
+- rm -r * // remove current directory completely
 - mv
 - ls
+
 All the commands can used with file having wild characters(regx)
 - ?ain -> main, gain
 - ls [aeiou]* // starting with vowel
@@ -87,6 +101,10 @@ All the commands can used with file having wild characters(regx)
 - ls - ls(by size)
 - ls -i // inode number associated with file
 - ln (another link to file, need to explore)
+- ls -x, -u(access tieme) 
+- ls -d (forces listing of directory)
+- ls -F lists exes with *, dir with / and symbolic link with @
+
 
 ## Permissions
 read (4), write(2) execute(1)
@@ -94,6 +112,36 @@ read (4), write(2) execute(1)
 - chmod +w file 
 - chmod go-x (remove execute permission from group and others)
 - default permission depends on umask value set
+- chmod u+x filename
+- chmod ugo+z filename or chmomd a+x or chmod +x //default is all 
+- chmod a+r, u+wx,o+x filename // multiple chmod in one go
+- chmod u+x file1 file2 file3
+- chmod -R a+x dirname 
+- chmod -R 755 *
+
+Read permission for directory means you can see dirs in listing
+Write permission means you can copy files in the direcotry or create another directory inside
+Execute means you can pass through directory, you can not explore /home/xyz/dir1/dir2/dir3 if you dont have exec permission in intermediate directories
+
+
+Default permission depends on default setting for (666) for regular files and 777 for directories.
+But default permission depends 'umask' whose default value is 022 which can be set
+> $ umask // which give 666-022 = 644 for files and 777-022 = 755 for directories
+
+> touch filename // changes modification time of the file
+
+## Hardlink/Softlink(Symbolic link) 
+Use ln command to create another link(name) for a file (both the files will have same inode number)
+> ln file.txt ../dir1/dir2/file2.txt
+
+Removing one of the file will reduce link count by 1, and it will be removed completely once link count reduces to zero. Problem here is that you can not create link of directories or  you can not create link outside filesystem.  
+Resolution to above problem is symbolic link or soft link, use -s option to do the same  
+ln -s /usr/bin bin. Here symbolic is just a directory entry containing the pathname, it does not occupy space on disk.  
+Ref : Sumitabha das
+
+
+
+
 
 ## alias 
 You can create alias in .bashrc for default functionality of any command, we generally do this for setting python3 as default python
@@ -104,7 +152,9 @@ alias python='python3'
 - mkdir/cd/
 - mkdir -p out/in/innermost
 - mkdir -m 754 dirname -> dir with given permission irrespective of umask
-- rmdir removes only if it is empty
+- rmdir dir //removes only if it is empty
+- rmdir -p dir1/dir2 
+
 
 ## User management
 - logname/whoami/date
@@ -117,9 +167,16 @@ alias python='python3'
 
 
 ## Checking Diskspace 
-- df 
+- df
+- df -t(total) /tmp -> also shows size of disk space in each file system
 - df -iv
 - du diskspace used by specified file/dir
+
+## Size of specific directory (disk usage)
+- du /dir
+- du -s* 
+
+
 
 ## Misc 
 - tail -n 7 filename // last 7 lines , default is 10
@@ -129,7 +186,7 @@ alias python='python3'
 - tail +25 filename // lines from 25th line till end 
 
 ## Litte theory notes
-Unix file system
+Unix file system 
 disk space alloted to unix file system are made up of blocks
 and all the blocks  are logically divided into 4 parts 
 - Boot block - has bootstrap loader
@@ -137,42 +194,3 @@ and all the blocks  are logically divided into 4 parts
 - Inode table (meta data about files)
 - Data block - actual file content
 
-### Mode of operation in VI
-- Command Mode : keys pressed are not visible,for cursor movement etc
-- Insert Mode : to insert new text etc 
-- Ex Command Mode : give commands at the command line, bottom lien of the vi screen in called command line   
-Note: Press i to go to insert mode, esc to leave insert mode and enter commmand mode
-
-vi 
-x - delete one character  
-nx - delete n characters   
-press R to override characters while typing  
-w - move characters word by word on right
-b - move characters word by word on left(backword)  
-e - go to end of the word, constant pressign move forward with cursor at end of the words  
-H, M , L : mvoe to first, mid and last line of screen  
-ctrl + f : scroll one window forward  
-ctrl + b : scroll one window backward
-
-### Enter text  
-a : shift to input mode and append text after the cursor  
-A : shift to input mode and append text at end of line  
-i : shift to input mode and append text at the cursor  
-I : shift to input mode and append text at begining of line  
-o - shift to input mode and open a new line below current line  
-O - shift to input mode and open a new line aove current line
-
-### Delete text in vi
-x - delete char at curent position  
-X - delete char to the left of  cursor  
-dw - delete a word from cursor to next space(including)  
-dd - delete current line  
-nx, ndw, ndd : delete n chars, words or lines  
-d0 - delete current line to left till begining of line from cursor  
-d$ : delete line from cursor to the end of file  
-
-### misc vi command
-. : Repeat action performed by last command  
-u : undo  
-~ : toggle character case(lower to upper and viceversa)
-ctrl + l : clear the window
