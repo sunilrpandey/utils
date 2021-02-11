@@ -20,3 +20,14 @@ Create a global file anywhere may be in home folder and add it to git configurat
 ```sh
 git config --global core.excludesfile ~/.global_gitignore
 ```
+
+## Ignore already added/committed file 
+To ignore already added/committed file in addition .gitignore update, do the following
+```sh
+git rm --cached filename 
+git rm -r --cached dirname
+```
+To remove it from git and local system, omit `--cached`. 
+```
+git rm -r -n dirname //-n does dry run and displays files deleted
+```
