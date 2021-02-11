@@ -20,8 +20,10 @@
 - [ ] [Create branch from existing tag](#brnachfromtag)
 
 ## Misc Usage
-- [ ] [Ignore files/dirs to add](#ignore)
+- [ ] [.gitignore - Ignore files/dirs to add](#ignore)
+- [ ] [Display ignored files/directories](#displayignore)
 - [ ] [Rename Branch](#renamebranch)
+- [ ] [Check File/Dir Status](#status)
 
 ## <a name='whatisgit'> what is git ?? </a>
 Git is one of the best version control tools that is available in the present market.
@@ -111,11 +113,13 @@ Make changes and add your file/directory to be uploaded
 git add _file1_ _file2_ .. OR
 git add . 	// add every changes down under
 ```
-<a name=status></a>
+#### <a name=status>Check Status of files created/modified</a>
+
 Check the status i.e. what files are marked to be added, what are deleted etc
 
 	git status		// will show folders only which are changed
 	git status -u    // to see complete path of files, not only folders 
+	git status --ignored // display ignored files/dirs
 
 Commit changes with appropriate message  
 ```sh
@@ -320,12 +324,28 @@ So its good to create a branch
 ### <a name=brnachfromtag>Create branch from existing tag</a>
 	git checkout -b <new_branch_name> <existing_tag_name>
   
- ## <a name=ignore>How to ignore few files/dir to be added to git</a>
-Create .gitignore file in local repo and add file/direactory names e.g.
+
+## <a name=displayignore>Display ignored files/directories</a>
+```
+	git status --ignored
+```
+## <a name=ignore>How to ignore few files/dir to be added to git</a>
+Create .gitignore file root repo or local folders where one can add file/direactory names/types e.g.
+local .gitignore files have precedence over higher up in repo.
 
 ``` 
-	*.log
-	vscode/
+	*.log 			# any .log in this foler or subfolders
+	vscode/			# all files in vscode folder
+	/temp.log		# temp.log in this folder only
+	temp.log		# in this folder or any subfolder
+	logs/**			# anything in logs folder
+	**/build		# build directory here or in subfolders
+	foo/**/bar		# matches foo/a/bar or foo/a/b/bar and similar
+
+	#can be used few regex
+	temp?.log		# matches .log similar to temp0.log, temp1.log etc
+	*.[os]			# file.o, file.s etc
+	*.[!io]			# other than .i and .o
 ```
 what if want exception for a file e.g. release.log when *.log is to be ignored, add belwo to .gitignore
 ```

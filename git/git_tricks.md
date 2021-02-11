@@ -14,3 +14,9 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 ```
+
+## Add global .gitignore
+Create a global file anywhere may be in home folder and add it to git configuration.
+```sh
+git config --global core.excludesfile ~/.global_gitignore
+```
