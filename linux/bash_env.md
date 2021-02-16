@@ -36,7 +36,7 @@ Go to bottom(Preferably to avoid messing up it) of .bashrc file and enter aliase
 ```sh
 alias nano='nano -l' 
 ```
-Note: you have to read the .bashrc file(. .bashrc) before you see the effect
+Note: you have to read/source the .bashrc file(. .bashrc) before you see the effect
 
 ## Add function to .bashrc file 
 
@@ -55,8 +55,8 @@ Now just call memory-usage to see it
 ```sh
 $ memory-usage
 ```
-reset network manager generally in ~/bin/nr
-sudo systemctl restart network-manager 
+reset network manager generally in ~/bin/nr  
+sudo systemctl restart network-manager   
 /usr/bin/time  
 show ~/filename.txt
 -  You can run a file by just giving its name if it is in ~/bin otherwise you may need to precede it by ~/
@@ -64,9 +64,9 @@ you can run a command from .bashrc
 /home/linus/bin/1
 
 //sshto
-script
-#!/bin/bash
-#ssh login shorthand command 
+script  
+#!/bin/bash  
+#ssh login shorthand command   
 
 ssh -X 121.123.34."$1"
 
@@ -83,23 +83,24 @@ upgrade - install newest version of all package
 dist-upgrade - upgrade + handle changing dependencies  
 full-upgrade - full-upgrade performs the function of upgrade but may also remove installed packages if that is required in order to resolve a package conflict
 
-apt-get autoremove -yy
-at-get autoclean
+apt-get autoremove -yy  
+at-get autoclean  
 do scripting and put it in any folder what you see when ecoh $PATH
 
 $HOME/bin is added to PATH 
-set -e : if error stop immediately .. genererally put on top of script
 
-a script has three 
+cat longfile.txt | more  
+cat << _EOF_ -> all to script till it encounters _EOF_
 
-cat longfile.txt | more
-cat << _EOF_ -> all to script thill it encounters _EOF_
+## more or less
+The main difference between more and less is that less command is faster because it does not load the entire file at once and allows navigation though file using page up/down keys.    
 
-The main difference between more and less is that less command is faster because it does not load the entire file at once and allows navigation though file using page up/down keys.  
-less longfile.txt #ok
+```sh
+less longfile.txt #ok  
 cat longfile.txt | less # also ok
 
-more file.txt
-cat file.txt | more
-more -10 file.txt # 10 lines per page
-more +15 file.txt # starting from 15th line
+more file.txt  
+cat file.txt | more  
+more -10 file.txt # 10 lines per page  
+more +15 file.txt # starting from 15th line  
+```

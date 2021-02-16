@@ -5,47 +5,46 @@ Read file content into a variable
 #!/bin/sh
 value=`cat file.txt`
 echo "$value"
-```
-without cat
-```sh
+
+//without cat
 value=$(<file.txt)
 echo "$value"
-```
-Do it line by line using loop
-```sh
+
+// Do it line by line using loop
 while read line; do    
     echo $line    
 done < file.txt
 ```
-Iterate through files in a directory(iterating file starting with fl_ and adding ext)
 
+Iterate through files in a directory(iterating file starting with fl_ and adding ext)
 ```sh
 for file in fl_*
 do
-        mv $file $file.text
+   mv $file $file.text
 done
 ```
 Other use case : 
-for file in dir1/dir2/*.txt
-for v in dir1/a??
-for tbl in {2..20..2}
-while true // for infinite loop
-white : // for infinite loop
+for file in dir1/dir2/*.txt  
+for v in dir1/a??  
+for tbl in {2..20..2}  
+while true // for infinite loop  
+while : // for infinite loop  
 
 # Basics
-> which bash // should output /bin/bash
-> can read a script used for config etc from another script and access its variables
+> which bash // should output /bin/bash  
+> can read a script used for config etc from another script and access its variables ?? 
 
-## shell tricks
+## Shell tricks
+Add below to shel scripts
+```sh
     set -eu // stops when error happens, undefined var is error  
     set -o pipefail
-
+```
 # Shell Script Syntaxes
 
 ```sh
 if [-w filename]    #If user has file write permission
 if [-r $file -a -w $file -a -w $file]   # check for read/write/execute
-if [! -d dirname] // is not a directory
 if [! -d dirname] // is not a directory
 if [str1 = str2]
 if [str1 != str2]
@@ -61,12 +60,11 @@ read n1 n2
 ```
 if using && etc use [[]] if -a -o etc can use []
 ## Logical operator
--a,, -o, ! as (AND, OR, NOT)
+-a, -o, ! as (AND, OR, NOT)  
 [! -d dirname] // is not a directory
 
-## If else
+## If/else/elif
 ```sh
-
 if [$x -gt 0] # -lt, le,ge,ne,eq
 then 
     echo ..
@@ -86,23 +84,21 @@ Options can be anything, integer, string, characters regex etc
 - *(0-9)
 - *)    # default choice, any pattern
 
+    ```sh
+    echo "Enter option"
+    read num
 
-
-```sh
-echo "Enter option"
-read num
-
-case $num in
-    1) echo "You entered one"
-    ;; # acts like break
-    2) echo "You entered two"
-    ;;
-    3) echo "You entered three"
-    ;;
-    *) echo "Out of range"
-    ;;
-esac
-```
+    case $num in
+        1) echo "You entered one"
+        ;; # acts like break
+        2) echo "You entered two"
+        ;;
+        3) echo "You entered three"
+        ;;
+        *) echo "Out of range"
+        ;;
+    esac
+    ```
 If we have no default case and no match is found nothing will be done.
 
 ## Loop
@@ -146,14 +142,12 @@ while read line
 do 
 echo "$line"
 done < "${1:-/dev/stdin}" # taking input from terminal
-
 : '
 command : ./script.sh file_name(if not given it will consider from terminal)
 '
 ```
 ### Output Stdout/stderr
 ```sh
-
 >  file make file standard output, >> for append
 <  file make file standard input
 <<  word read upto the 'word' or end of file 
@@ -167,20 +161,20 @@ ls -al >&both.txt # file for both
 ## Functions
 ```sh
 function print_table_3(){
-        echo "func demo"
-        for tbl in {3..30..3}
-        do
-                echo "$tbl"
-        done
+    echo "func demo"
+    for tbl in {3..30..3}
+    do
+        echo "$tbl"
+    done
 }
 
 function print_range(){
-        echo "func with arg demo : print $1 to $2"
+    echo "func with arg demo : print $1 to $2"
 
-        for((i = $1 ; i < $2; i++))
-        do
-                echo $i
-        done
+    for((i = $1 ; i < $2; i++))
+    do
+        echo $i
+    done
 }
 
 # call functions
@@ -239,6 +233,9 @@ multiline commment
     bash -x ./scriptname.sh //will give line by line run   
     #! /bin/bash -x //add on bash header only
 
+    set -e : if error stop immediately .. genererally put on top of script
+
+
 We can set-up region to debug, to do this sandwitch your problematic code between set -x and set +x
 ```sh
     set -x
@@ -249,5 +246,5 @@ We can set-up region to debug, to do this sandwitch your problematic code betwee
 ```
 
 ## TODO
-- take inptu from keyboard and append in file usign cat
+- take input from keyboard and append in file usign cat
 - reading from file
