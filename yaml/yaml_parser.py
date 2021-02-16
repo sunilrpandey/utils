@@ -1,12 +1,26 @@
 import yaml
 import json
 
-def demo():
-    filename = "sample.yaml"
+
+
+def demo_write_to_yaml_file(filename):
+    dct = {
+        'key1':'value1',
+        'key2':['value21','value22','value23'],
+        'key3':{'key31':'value31','key32':'value32','key33':'value33',},
+        'key4':'value4',
+    }
+    with open(filename,'w') as outputfile:
+        yaml.dump(dct,outputfile)
+
+    
+def demo_read_yaml(filename):
+    
     #yaml.load()
     with open(filename) as ymlfile:
         print("File Content..")
-        sample = yaml.load(ymlfile, Loader=yaml.FullLoader)
+        #sample = yaml.load(ymlfile, Loader=yaml.FullLoader)
+        sample = yaml.full_load(ymlfile)
         #print(sample)
         
         print("Demo : List..")
@@ -38,5 +52,9 @@ def demo():
         lst = d['key2']
         print("Fetched List : ",lst)
        
+def demo():
+    demo_read_yaml("sample.yaml")
+    demo_write_to_yaml_file("output.yaml")
+
 if __name__ == "__main__":
     demo()

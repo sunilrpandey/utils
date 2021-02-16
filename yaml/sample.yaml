@@ -13,6 +13,10 @@ nested_list:
     - item52
   - item6
 
+dct:
+  key1: value1
+  key2: value2
+
 nested_dct:
   key3: value3
   key4: value4
