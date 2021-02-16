@@ -1,0 +1,37 @@
+#Yaml: Yet another markup language, a data serialization language
+key1: value1
+key2: value2
+
+lst:
+  - item1
+  - item2
+  - item3
+
+nested_list:
+  - item4
+  - - item51
+    - item52
+  - item6
+
+nested_dct:
+  key3: value3
+  key4: value4
+  in_dct: 
+    key51: value51
+    key52: value52
+  key6: value6 
+
+dict_in_list:
+  - item1
+  - key3: value3
+    key4: value4
+  - item4
+  - item5
+  
+list_in_dict:
+  key1: value1
+  key2: 
+    - value21
+    - value22
+  key3: value3
+    
