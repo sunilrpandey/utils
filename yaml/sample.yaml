@@ -2,6 +2,15 @@
 key1: value1
 key2: value2
 
+no_new_line_key: >
+  this is multiline
+  string for the key
+  and will not keep new line information
+keep_new_line_key: |
+  this is multiline
+  string for the key
+  and will not keep new line information
+  
 lst:
   - item1
   - item2

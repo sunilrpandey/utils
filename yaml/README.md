@@ -75,6 +75,34 @@ dct = {
     with open(filename,'w') as outputfile:
         yaml.dump(dct,outputfile)
 ```
+## Enter multiline value for a key, | to keep new line track, > to ignore
+```yaml
+no_new_line_key: >
+  this is multiline
+  string for the key
+  and will not keep new line information
+keep_new_line_key: |
+  this is multiline
+  string for the key
+  and will keep new line information
+```
+When you access above messages from python
+```
+    multline_msg = sample['no_new_line_key']
+    print("> - no new line track : ", multline_msg)
+    
+    multline_msg = sample['keep_new_line_key']
+    print("| - will keep new line track : ", multline_msg)
+
+    Output would be : 
+    > - no new line track :  this is multiline string for the key and will not keep new line information
+
+    I - will keep new line track :  this is multiline
+        string for the key
+        and will not keep new line information
+```
+
+
 
 ## References
 [Yaml Validator](http://www.yamllint.com/)  

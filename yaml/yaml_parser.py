@@ -22,6 +22,15 @@ def demo_read_yaml(filename):
         #sample = yaml.load(ymlfile, Loader=yaml.FullLoader)
         sample = yaml.full_load(ymlfile)
         #print(sample)
+
+        multline_msg = sample['no_new_line_key']
+        print("> - no new line track : ", multline_msg)
+        
+        multline_msg = sample['keep_new_line_key']
+        print("| - will keep new line track : ", multline_msg)
+
+
+        return
         
         print("Demo : List..")
         lst = sample['lst']
@@ -54,7 +63,7 @@ def demo_read_yaml(filename):
        
 def demo():
     demo_read_yaml("sample.yaml")
-    demo_write_to_yaml_file("output.yaml")
+    # demo_write_to_yaml_file("output.yaml")
 
 if __name__ == "__main__":
     demo()
