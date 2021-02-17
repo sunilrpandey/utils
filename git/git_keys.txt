@@ -1,0 +1,162 @@
+﻿Git
+General Flow
+Setup Repo
+Create repo at github.com for your folder on your system
+Run git init in your folder at system to add to github
+git remote add origin <repo_url>
+
+
+Or clone it
+Git clone <repo_url> on your system
+
+
+Make changes and push
+git status
+git pull origin master
+git add <file1>
+git commit -m “comment”
+git push origin master(or other branch at remote)
+------------------------------------------------------------------------------------
+
+
+Setup Git
+Open Github account, add create private key for your system to avoid multiple query for credentials.
+apt-get install git
+git --version
+
+
+git config --global user.name <user_name> //CONFIG USERNAME
+git config --global user.email <email>
+git config --global user.name                        //  VERIFY USERNAME
+git config --global user.email
+git config --list
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"         
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+xcopy -selection clipboard < ~/.ssh/id_rsa.pub //TO ADD IT TO GITHUB SETTING
+
+
+Setup Repo
+git clone <repo_url>
+
+
+git init //IN YOUR LOCAL FOLDER
+git remote add origin <repo_url>
+
+
+Pull the Code
+git fetch origin master //Download objects and refs from remote repository for master branch
+git pull origin master ( optional when history is creating issues --allow-unrelated-histories
+git pull
+git pull <repo_url> //downloads the code, add remote origin to setup local/remote 
+
+
+Status of current Code 
+git status                // will show folders only which are changed
+git status -u    // to see complete path of files, not only folders 
+git status --ignored // display ignored files/dirs
+
+
+Add modified files
+git add _file1_ _file2_ .. OR
+git add .         // add every changes down under
+git add -p (for chunks)
+
+
+git rm --cached test_repo.txt // if added by mistake
+
+
+See the difference
+git diff, 
+git diff --base <filename>, 
+git diff <sourcebranch> <targetbranch>
+
+
+Commit the code to local repo
+git commit -m "message"
+git commit --amend // add to previous         commit, no comment changed
+git commit --amend -m "update message" // add to previous commit, no comment  
+git commit // will prompt you to add multiline comment
+git commit -a // add and multiline comment in one go
+
+
+Push the code to remote 
+git push origin master
+git push origin <branch_name>
+git push --all origin //Push all branches to your remote repository
+
+
+ Check logs
+- git log --graph // git log if you want to see the classic git branch timeline view
+- git log --oneline
+- git log --color --oneline --decorate=no --graph
+- git log --graph --decorate --pretty=oneline --abbrev-commit
+
+
+git blame <file_name> //History of file
+
+
+Work on your branch
+- git branch // gives list of branch 
+- git branch -a // to list all the remote branches as well
+- git checkout <branch_name> 
+- git checkout -b <branch_name> // if you want to create and switch to a new branch.
+- git branch --set-upstream-to=origin/<branch> master
+- git branch -d <branch_name> //or -D
+- git push origin --delete <branch_name>
+- git branch -m <new_name> //Rename branch
+
+
+Reset changes if required
+git reset --hard origin/master<or branch>
+git reset -- <filename> // revert a file
+git reset <:mode:> <:COMMIT:> // mode can be --hard or --soft
+git checkout -- <filename> to revert file // reset a file
+git reset --hard //Discard all local changes to all files permanently
+git reset HEAD <file>
+
+
+Save for later
+Discard all local changes, but save them for possible re-use later, changes that you don’t want to  commit immediately.
+- git stash 
+- git stash in your working directory. 
+- git stash apply if you want to bring your saved changes back.
+- git stash pop // to get latest stashed changes
+
+
+Merge the code 
+git merge <:branch_you_want_to_merge:> //Merge and commit in one go
+git merge --no-commit --no-ff //No commit, show the conflicts
+
+
+Clean the junk
+git clean -df 
+
+
+Where is remote?
+git remote //will show origin or <remote_name>
+git remote -v // List all currently configured remote names and respective urls
+git remote show origin        //other commands to know about remote/origin 
+git config --get remote.origin.url // to know the url
+
+
+Submodule
+git submodule update --init --recursive
+
+
+`
+git tag
+git tag -l "ver.*"
+
+
+git tag <tagname> <commit_id>(optional) //if not present will take HEAD of curretn branch
+git tag -a <tag_name> // will open editor to add meta data
+git tag -a <tag_name> -m "enter metadata for the tag/version"
+git push origin <tag_name> 
+git push origin --tags //If you have created multiple tags and want to push all of it
+git tag -d <tag_name>
+git push origin :refs/tags/<tag_name> //Deletes remote tag
+ 
+git checkout <tag_name>
+git checkout -b <branch_name>
+git checkout -b <new_branch_name> <existing_tag_name>
