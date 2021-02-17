@@ -1,0 +1,42 @@
+---  
+-name: Shell command example   
+Hosts: testservers  
+tasks:  
+-name: check date with the shell command  
+shell:  
+"date"  
+register: datecmd  
+tags: datecmd  
+-debug: msg= "{{datecmd.stdout}}" 
+
+...............
+multiple shell commands
+- name: Shell Examples  
+  hosts: testservers  
+  tasks:  
+  - name: Clear Cache and Restart tomcat  
+    become: yes  
+    delay: 10  
+    async: 10  
+    poll: 50  
+    shell: |  
+      echo -e "\n Change directory to the Tomcat"  
+      cd tomcat8/  
+      echo -e "\n Present working directory is" `pwd`  
+        
+      echo -e "\n Stopping the tomcat instance"  
+      bin/shutdown.sh  
+      echo -e "\n Clearning the tmp and work directory of tomcat"  
+      rm -rfv tmp/*  
+      rm -rfv work/*  
+      echo -e "\nTruncate the log file"  
+      > logs/catalina.out  
+      echo -e "\nDirectory listing"  
+      ls -lrtd logs/catalina.out  
+      echo -e "\nStarting the instance"  
+      bin/startup.sh      
+    args:  
+      chdir: "/apps/tomcat/"  
+    register: fileout  
+    tags: fileout   
+  - debug: msg="{{ fileout.stdout_lines }}"  

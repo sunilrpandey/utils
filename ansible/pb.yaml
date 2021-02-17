@@ -1,0 +1,59 @@
+---
+  - name: "Playing with Ansible and Git"
+    hosts: all # or local host
+    #connection: local  # its mentioned in inventory now
+    tasks: 
+
+    - name: "just execute a ls -lrt command"
+      shell: "ls -lrt"
+      register: "output"
+
+    - debug: var=output.stdout_lines
+
+
+
+
+- hosts : <your hosts>   
+vars:  
+tomcat_port : 8080   
+
+  block:   
+   - name: Install Tomcat artifacts   
+      action: >   
+      yum name = "demo-tomcat-1" state = present   
+      register: Output   
+            
+   always:   
+      - debug:   
+         msg:   
+            - "Install Tomcat artifacts task ended with message: {{Output}}"   
+            - "Installed Tomcat artifacts - {{Output.changed}}"   
+
+
+------------------
+tasks:  
+- yum:  
+    name: "{{ item }}"  
+    state: present  
+  loop:  
+  - httpd  
+  - memcached  
+  tags:  
+  - packages  
+  
+- template:  
+    src: templates/src.j2  
+    dest: /etc/foo.conf  
+  tags:  
+  - configuration  
+----
+  tasks:  
+- debug:  
+    msg: "Always runs"  
+  tags:  
+  - always  
+  
+- debug:  
+    msg: "runs when you use tag1"  
+  tags:  
+  - tag1  
