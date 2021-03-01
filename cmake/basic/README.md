@@ -1,6 +1,17 @@
 # **CMake Notes**
 
-## 1. Hello CMake!
+- [ ] [1. Hello CMake!](#hello)
+- [ ] [2. Use files from another directory include/src!](#include)
+- [ ] [3. Create Static library!](#static)
+- [ ] [4. Create Shared library](#shared)
+- [ ] [5. Use static library](#usestatic)
+- [ ] [6. Use shared library](#useshared)
+
+# Misc 
+- [ ] [Add C++ Preprocessor Macro](#macro)
+- [ ] [Build cmake project](#build)
+
+## <a name='hello'>1. Hello CMake!</a>
 1. create a folder for your program
 2. create CMakeLists.txt and write 
     
@@ -56,8 +67,7 @@
 6. run executable 
 
     `./hello_world`
-
-## 2. Use files from another directory include/src
+## <a name='include'>2. Use files from another directory include/src</a>
 Say we want to use a class and its implementation saved in include/src. We need to add headers in **include**  using "include_directories", cpp in **src** using ~~**set**~~ or ~~**file(GLOB..)**~~ and update add_executable 
 
 > include_directories(${PROJECT_SOURCE_DIR/include)
@@ -72,7 +82,7 @@ also can use file/GLOB to add all files
 Lets provide add_executable the sources
 > add_executable(hello_include ${SOURCES})
 
-## 3. Create Static library
+## <a name = 'static'>3. Create Static library</a>
 use add_library instead of add_executable to create static library
 
 ```
@@ -95,7 +105,7 @@ Also you can find a file install_manifest.txt which keeps installation path
 , and you can determine the constituents of a static library using the GNU ar (archive) command
 > ar -t libtest_static_lib.a
 
-## 3. Create Shared library
+## <a name = 'shared'>4. Create Shared library</a>
 ```
 add_library(test_shared_lib SHARED
             ${SOURCES})
@@ -108,7 +118,7 @@ install(TARGETS test_shared_lib DESTINATION /usr/lib)`
 
 once you run **cmake ..** and **make** , **.so** file would be created inside build folder
 
-## 4. Use static library
+## <a name = 'usestatic'>5. Use static library </a>
 1. Identify library to be used, and link directory 
 ```
 set(PROJECT_LINK_LIBS libtest_static_lib.a)
@@ -128,7 +138,7 @@ add_executable(demo_test_static_lib demo_static_lib.cpp)
 target_link_libraries(demo_test_static_lib ${PROJECT_LINK_LIBS})
 ```
 
-## 5. Use shared library
+## <a name = 'useshared'>6. Use shared library</a>
 1. Identify library to be used, and link directory 
 ```
 set(PROJECT_LINK_LIBS libtest_static_lib.a)
@@ -146,11 +156,26 @@ add_executable(demo_test_static_lib demo_static_lib.cpp)
 target_link_libraries(demo_test_static_lib ${PROJECT_LINK_LIBS})
 ```
 
-## Misc: Add C++ Preprocessor Macro
+# <a name = 'mis'>Misc Use Cases</a>
+## <a name = 'macro'>Add C++ Preprocessor Macro</a>
 Add below line to CMakeLists.txt
 ```
 add_definitions(-DLOG_ENABLED)
 ```
+
+## <a name = 'build'>Build cmake project</a>
+Write copy below commands to cmake_install.sh and run it from your cmake project root (Where CMakelists.txt is present)
+```
+#!/bin/bash
+rm CMakeCache.txt
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local 
+make
+make install
+make clean
+```
+You can specify if you want to build it on specific directory..BTW CMAKE_BUILD_TYPE and CMAKE_INSTALL_PREFIX is optional, cmake .. will also do
 ## References
 * [Modern CMake](https://gitlab.com/CLIUtils/modern-cmake)
 * [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
