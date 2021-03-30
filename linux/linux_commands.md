@@ -1,10 +1,5 @@
 # Linux Commands
 
-## shell tricks
-set -eu // stops when error happens, undefined var is error  
-set -o pipefail
-
-
 ## Use cases
 ### Get list of exports
     $export

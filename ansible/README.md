@@ -34,13 +34,14 @@ verify installation using
   ansible 2.10.3
   with few more details
 ```
-### Createinventory file to group hosts
-
+### Create inventory file to group hosts
+The default location for inventory is a file called /etc/ansible/hosts. You can also specify a different inventory file at the command line using the -i <path> option
 ```sh 
 [example]
 107.20.106.183 or webaddress 
 107.20.100.103 or webaddress
 ```
+It is possible to make groups of the group using the :children's suffix. And you can apply variables using :vars.
 
 ### Ad-hoc commands 
 Ad-hoc Commands(/usr/bin/ansible) are used in Ansible to execute tasks instantly on a server or group of servers, these are not re-usable.
@@ -223,6 +224,11 @@ Hello
 No change in this line
 My first playbook using the template
 ```
+
+## Ansible Debug
+## Ansible Apt
+## Ansible Lifeline
+The lineinfile is one of the most powerful modules in the Ansible toolbox. Ansible lineinfile module is used to insert a line, modify, remove, and replace an existing line.
 ## Misc
 Ansible Galaxy is a galaxy website where users can share roles and to a command-line tool for installing, creating, and managing roles.
 ## References
