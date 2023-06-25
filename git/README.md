@@ -229,6 +229,12 @@ Deletes a branch on your remote repository
 
 ```
 ### <a name=reset>Reset/Revert</a>
+Revert added changes (by git add <filename>) before commit
+```
+git reset -- <filename>  // to move from added to modified state
+git restore <filename>   // to discard changes in file
+```
+
 Reset local repository and point your local master branch to latest history fetched from remote server
 ```
 git reset --hard origin/master<or branch>
