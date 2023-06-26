@@ -201,8 +201,13 @@ Display logs based on requirement granularity
 ``` 
 - git log --graph // git log if you want to see the classic git branch timeline view
 - git log --oneline
+- git log --oneline  -n <filename(optional)>  // for last n commits in a file
 - git log --color --oneline --decorate=no --graph
 - git log --graph --decorate --pretty=oneline --abbrev-commit
+```
+Know more about a particular commit 
+```
+- git show <commit_id>
 ```
 ### <a name=blame>blame</a>
 To know the history of a file
