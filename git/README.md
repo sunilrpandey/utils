@@ -191,9 +191,13 @@ Use above to download the code, add remote origin to setup local/remote (checked
 ### <a name=diff>Diff</a>
 View all the merge conflicts, View the conflicts against the base file, Preview changes, before merging
 ```
-git diff, 
+git diff,
+git diff <filename>, # for a particular file if git add is not done
+git diff --cached <filename>,  # if file is already added(Stashed)
 git diff --base <filename>, 
 git diff <sourcebranch> <targetbranch>
+git diff <sourcebranch> <targetbranch> <file_name>
+git diff <commit1> <commit2> <file_name>
 ```
 
 ### <a name=log>log</a>
