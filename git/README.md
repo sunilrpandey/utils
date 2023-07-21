@@ -208,6 +208,12 @@ Display logs based on requirement granularity
 - git log --oneline  -n <filename(optional)>  // for last n commits in a file
 - git log --color --oneline --decorate=no --graph
 - git log --graph --decorate --pretty=oneline --abbrev-commit
+
+```
+To show log in more friendly format < commit_id date commit_comment> 
+```
+- git log --pretty=format:"%h %ad %s" --date=short
+
 ```
 Know more about a particular commit 
 ```
