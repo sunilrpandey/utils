@@ -310,13 +310,17 @@ If you want to contribute to some project
  ### <a name=listtag>List tags</a>
  ```
  git tag
- git tag -l "ver.*"
+ git tag --list "ver.*" // list tags with tag name having string "ver."
+ ```
+ ### <a name=showtag>Show tag detail</a>
+ ```
+ git show <tag_name>
  ```
  ### <a name=createtag>Create Tag</a>
  ```
  git tag <tagname> <commit_id>(optional) //if not present will take HEAD of curretn branch
- git tag -a <tag_name> // will open editor to add meta data
- git tag -a <tag_name> -m "enter metadata for the tag/version"
+ git tag -a -f <tag_name> // will open editor to add meta data
+ git tag -a -f <tag_name> -m "enter metadata for the tag/version"
  ```
  ### <a name=pushtag>Push tags to remote branch</a>
 	git push origin <tag_name> 
