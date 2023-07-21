@@ -6,7 +6,7 @@
 - [ ] [Change Pipeline](#fullflow)
 - [ ] [What is Pull Request](#pullreq) 
 - [ ] [Handy Git Commands](#cmds)
-- [Clone](#clone) , [Add](#add),[rm](#remove) [Stash](#stash), [Commit](#commit) ,  [Push](#push) , [Pull](#pull) , [Merge](#merge)
+- [Clone](#clone) , [Add](#add),[rm](#remove) [Stash](#stash), [Commit](#commit) ,  [Push](#push) , [Pull](#pull) , [Merge](#merge), [Rebase](#rebase)
 - [Status](#status), [Reset](#reset) , [Log](#log), [Diff](#diff) , [Blame](#blame)
 - [Branch](#branch) , [Submodule](#submodule) , [Clean](#clean), [Fetch](#fetch)
 
@@ -120,6 +120,7 @@ Check the status i.e. what files are marked to be added, what are deleted etc
 	git status		// will show folders only which are changed
 	git status -u    // to see complete path of files, not only folders 
 	git status --ignored // display ignored files/dirs
+ 	git status -s // s is for short
 
 Commit changes with appropriate message  
 ```sh
@@ -263,29 +264,73 @@ git reset HEAD <file>
 ```
 
 ### <a name=stash>stash</a>
+You can save a stash on one branch, switch to another branch later, and try to reapply the changes. You can also have modified and uncommitted files in your working directory when you apply a stash — Git gives you merge conflicts if anything no longer applies cleanly.
 ``` 
 Discard all local changes, but save them for possible re-use later, changes that you don’t want to  commit immediately.
-- git stash 
+- git stash
+- git stash list // to see all the stored stashes
+		stash@{0}: WIP on master: 049d078 Create index file
+		stash@{1}: WIP on master: c264051 Revert "Add file_size"
+		stash@{2}: WIP on master: 21d80a5 Add number to log
 - git stash in your working directory. 
-- git stash apply if you want to bring your saved changes back.
-- git stash pop // to get latest stashed changes
+- git stash apply // if you want to bring your LATEST saved changes back.
+- git stash apply stash@{2} // USE SPECIFIC STASH, BUT IT WILL REMAIN IN HISTORY
+- git stash drop stash@{0} //DROP FROM HISTORY
+- git stash pop // APPLY AND DROP IN ONE STEP
+- git stash clear // to clear all the stashes
 ```
 
 ### <a name=merge>merge</a>
-Merge the branch with current branch and commit in one go
+Merge the branch with current branch and commit in one go. So in order to merge branch with master.. Go to master branch and merge changes from branch you want
 
+	git checkout master 
 	git merge <:branch_you_want_to_merge:> 
 
 Please dont commit after merge, I need to check if there is any conflict present. 
 
 	git merge --no-commit --no-ff 
 
+In Merging process, suppose you branch out from master(parent_commit) and make changes to implement features(feature_commit). Meantime another team member made some fixes to master and committed(fix_commit) .So on merging your feature_commit changes, you expect it to have fix_commit as well done by ohter.. and git merge does just that.. new featured_master-commit  will have changes from both feature_commit and fix_commit and both commits become parents to latest commit(featured_master_commit)
 
+### <a name=rebase>rebase</a>
+
+In rebase, Git takes fix/patch code from fix_commit and apply it to feature_commit to integrate changes in feature_commit to master
+Below is the stp by step process.
+1. Go to feature_commit branch and rebase master
+```
+	git checkout feature_commit
+   	git rebase master
+```
+Above Step will add feature_commit changes on top of master(pointing to fix_commit)
+
+2. Now you can go to master and merge this patch(created by git from feature_commit) to master by executing below commands
+```
+	git checkout master
+	git merge feature_commit	
+```
+Here updated master (with feature_commit) will now have only one parent which is fix_commit. and you see the linear history, which rebase ensures. So basically in rebase you branch out, make changes and when it is ready you just reassign/relocate/rebase your master(origin of the code) to current master and merge
+
+Ref : https://git-scm.com/book/en/v2/Git-Branching-Rebasing
 
 ### <a name=clean>clean </a>
-	git clean -df 
+Remove files from your working directory that are not tracked (-d for directories if becomes empty)
 
+	git clean -df 
+ 
+for safe side, which removes everything but stash 
+
+	git stash --all // to remove everything but save it in a stash
+
+ If you ever want to see what it would do, you can run the command with the --dry-run (or -n) option, which means “do a dry run and tell me what you would have removed”.
+
+  	$ git clean -d -n
+   
+Any file that matches a pattern in your .gitignore or other ignore files will not be removed. To remove those too you can do a fully clean build, you can add a -x to the clean command.
+
+	git clean -n -d -x
+ 
 ### <a name=submodule>submodule</a>
+
 	git submodule update --init --recursive
 
 ## Miscellaneous
