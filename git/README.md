@@ -444,6 +444,8 @@ git push origin --delete <old_name>
 
 
 ## References
+[Add two git servers on one machine](https://stackoverflow.com/questions/40549348/is-it-possible-to-use-github-and-gitlab-on-one-machine#:~:text=Yes%20you%20can%2C%20you%20can,new%20one%20per%20git%20server.)
+
 [Pro Git book](https://git-scm.com/book/en/v2)
 
 [kbroman git_tutorial](https://kbroman.org/github_tutorial/)
