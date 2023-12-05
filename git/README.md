@@ -402,8 +402,8 @@ So its good to create a branch
 	git status --ignored
 ```
 
-## <a name=twogitservers>Setup git to use two git servers e.g. github and gitlab on single machine</a>
-Assuming 
+## <a name=twogitservers>Use two git servers e.g. github and gitlab on single machine</a>
+
 1. Generate and add ssh keys to both the servers
 2. Create a config file(touch config) in windows->C:\Users\<username>\.ssh or linux ~/.ssh to provide references of git servers and Identities created on system for these servers
 
