@@ -20,6 +20,7 @@
 - [ ] [Create branch from existing tag](#brnachfromtag)
 
 ## Misc Usage
+- [ ] [Setup git to use two git servers e.g. github and gitlab on single machine](#twogitserver)
 - [ ] [.gitignore - Ignore files/dirs to add](#ignore)
 - [ ] [Display ignored files/directories](#displayignore)
 - [ ] [Rename Branch](#renamebranch)
@@ -399,6 +400,40 @@ So its good to create a branch
 ```
 	git status --ignored
 ```
+
+## <a name=twogitservers>Setup git to use two git servers e.g. github and gitlab on single machine</a>
+Assuming 
+1. Generate and add ssh keys to both the servers
+2. Create a config file(touch config) in windows->C:\Users\<username>\.ssh or linux ~/.ssh to provide references of git servers and Identities created on system for these servers
+
+Content of config file
+```
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host gitlab.kpit.com
+    HostName gitlab.kpit.com
+    User git
+    IdentityFile ~/.ssh/gl_kpit_id_ed25519
+    IdentitiesOnly yes
+```
+set local user name and emails by going to respective local repositories
+```
+	git config --local user.name <user_name>
+	git config --local user.email <email>
+```
+And verify
+```
+	git config  user.name
+	git config  user.email
+```
+![image](https://github.com/sunilrpandey/utils/assets/7045223/c8a337f7-b519-4c30-a467-a7cc28d951ac)
+
+
+
 ## <a name=ignore>How to ignore few files/dir to be added to git</a>
 Create .gitignore file root repo or local folders where one can add file/direactory names/types e.g.
 local .gitignore files have precedence over higher up in repo.
