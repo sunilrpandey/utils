@@ -69,6 +69,7 @@ One can list other config information
 	```
 	ssh-keygen -t rsa -b 4096 -C "your_email@example.com"	 
 	eval "$(ssh-agent -s)"
+ 	ssh-agent -s # for Windows
 
 	ssh-add ~/.ssh/id_rsa
 	```
@@ -430,9 +431,6 @@ And verify
 	git config  user.name
 	git config  user.email
 ```
-![image](https://github.com/sunilrpandey/utils/assets/7045223/c8a337f7-b519-4c30-a467-a7cc28d951ac)
-
-
 
 ## <a name=ignore>How to ignore few files/dir to be added to git</a>
 Create .gitignore file root repo or local folders where one can add file/direactory names/types e.g.
@@ -479,9 +477,6 @@ git push origin --delete <old_name>
 
 
 ## References
-[Add two git servers on one machine](https://stackoverflow.com/questions/40549348/is-it-possible-to-use-github-and-gitlab-on-one-machine#:~:text=Yes%20you%20can%2C%20you%20can,new%20one%20per%20git%20server.)
-
-[Medium link : Add two git servers on one machine] (https://medium.com/@viviennediegoencarnacion/manage-github-and-gitlab-accounts-on-single-machine-with-ssh-keys-on-mac-43fda49b7c8d)
 
 [Pro Git book](https://git-scm.com/book/en/v2)
 
