@@ -20,7 +20,7 @@
 - [ ] [Create branch from existing tag](#brnachfromtag)
 
 ## Misc Usage
-- [ ] [Setup git to use two git servers e.g. github and gitlab on single machine](#twogitserver)
+- [ ] [Setup git to use two git servers e.g. github and gitlab on single machine](#twogitservers)
 - [ ] [.gitignore - Ignore files/dirs to add](#ignore)
 - [ ] [Display ignored files/directories](#displayignore)
 - [ ] [Rename Branch](#renamebranch)
