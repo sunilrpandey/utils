@@ -117,7 +117,7 @@ git add _file1_ _file2_ .. OR
 git add . 	// add every changes down under
 ```
 
-### <a name=uploadclonedCode>What if you want to upload changes on cloned code</a>
+## <a name=uploadclonedCode>What if you want to upload changes on cloned code</a>
 Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
 Go to cloned code directory
 ```
