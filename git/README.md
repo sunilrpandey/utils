@@ -2,7 +2,8 @@
 - [ ] [what is git](#whatisgit)
 - [ ] [Setup](#setup)
 	- [Setup local and remote repository](#reposetup)
-	- [Clone the repository and add your input](#cloneit) 
+	- [Clone the repository and add your input](#cloneit)
+        - [Change remote origin to update and push cloned code](#uploadclonedCode)
 - [ ] [Change Pipeline](#fullflow)
 - [ ] [What is Pull Request](#pullreq) 
 - [ ] [Handy Git Commands](#cmds)
@@ -114,6 +115,14 @@ Make changes and add your file/directory to be uploaded
 ```
 git add _file1_ _file2_ .. OR
 git add . 	// add every changes down under
+```
+
+### <a name=uploadclonedCode>What if you want to upload changes on cloned code</a>
+Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
+Go to cloned code directory
+```
+	git init
+	git remote set-url origin <new_git_repository_url>
 ```
 #### <a name=status>Check Status of files created/modified</a>
 
