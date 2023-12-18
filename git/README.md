@@ -21,7 +21,7 @@
 
 ## Misc Usage
 - [ ] [Setup git to use two git servers e.g. github and gitlab on single machine](#twogitservers)
-- [ ] [Change remote origin to update and push cloned code](#uploadclonedCode)
+- [ ] [Change remote origin to update and push cloned code](#modifyclonedCode)
 - [ ] [.gitignore - Ignore files/dirs to add](#ignore)
 - [ ] [Display ignored files/directories](#displayignore)
 - [ ] [Rename Branch](#renamebranch)
@@ -433,7 +433,9 @@ And verify
 	git config  user.name
 	git config  user.email
 ```
-## <a name=uploadclonedCode>Update/upload changes on cloned code to new repository</a>
+
+## <a name=modifyclonedCode>Update/upload changes on cloned code to new repository</a>
+
 Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
 Go to cloned code directory
 ```
