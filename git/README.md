@@ -117,13 +117,6 @@ git add _file1_ _file2_ .. OR
 git add . 	// add every changes down under
 ```
 
-## <a name=uploadclonedCode>What if you want to upload changes on cloned code</a>
-Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
-Go to cloned code directory
-```
-	git init
-	git remote set-url origin <new_git_repository_url>
-```
 #### <a name=status>Check Status of files created/modified</a>
 
 Check the status i.e. what files are marked to be added, what are deleted etc
@@ -439,6 +432,13 @@ And verify
 ```
 	git config  user.name
 	git config  user.email
+```
+## <a name=uploadclonedCode>update/upload changes on cloned code to new repository</a>
+Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
+Go to cloned code directory
+```
+	git init
+	git remote set-url origin <new_git_repository_url>
 ```
 
 ## <a name=ignore>How to ignore few files/dir to be added to git</a>
