@@ -2,8 +2,7 @@
 - [ ] [what is git](#whatisgit)
 - [ ] [Setup](#setup)
 	- [Setup local and remote repository](#reposetup)
-	- [Clone the repository and add your input](#cloneit)
-        - [Change remote origin to update and push cloned code](#uploadclonedCode)
+	- [Clone the repository and add your input](#cloneit)        
 - [ ] [Change Pipeline](#fullflow)
 - [ ] [What is Pull Request](#pullreq) 
 - [ ] [Handy Git Commands](#cmds)
@@ -22,6 +21,7 @@
 
 ## Misc Usage
 - [ ] [Setup git to use two git servers e.g. github and gitlab on single machine](#twogitservers)
+- [ ] [Change remote origin to update and push cloned code](#uploadclonedCode)
 - [ ] [.gitignore - Ignore files/dirs to add](#ignore)
 - [ ] [Display ignored files/directories](#displayignore)
 - [ ] [Rename Branch](#renamebranch)
@@ -433,7 +433,7 @@ And verify
 	git config  user.name
 	git config  user.email
 ```
-## <a name=uploadclonedCode>update/upload changes on cloned code to new repository</a>
+## <a name=uploadclonedCode>Update/upload changes on cloned code to new repository</a>
 Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
 Go to cloned code directory
 ```
