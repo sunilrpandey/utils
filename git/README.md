@@ -21,6 +21,7 @@
 
 ## Misc Usage
 - [ ] [Setup git to use two git servers e.g. github and gitlab on single machine](#twogitservers)
+- [ ] [Setup git to use two github account single machine](#twoaccount)
 - [ ] [Change remote origin to update and push cloned code](#modifyclonedCode)
 - [ ] [.gitignore - Ignore files/dirs to add](#ignore)
 - [ ] [Display ignored files/directories](#displayignore)
@@ -433,7 +434,37 @@ And verify
 	git config  user.name
 	git config  user.email
 ```
+## <a name=twoaccount>Setup git to use two github account single machine</a>
 
+1. Generate and setup ssh key for both accounts(assume id_rsa/id_rsa_second)
+2. Create a config file(touch config) in windows->C:\Users\<username>\.ssh or linux ~/.ssh to provide references of git account and Identities 
+
+Content of config file
+```
+#Default GitHub 
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+  
+Host github.com-second
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_second
+```
+Note that, for second case you have to modify repository ssh link by adding -second to  git@github.com
+for example git@github.com:<second_user_name>/newcode.git becomes git@github.com-second:<second_user_name>/newcode.git
+
+Now set local user name and emails by going to respective local repositories
+```
+	git config --local user.name <user_name>
+	git config --local user.email <email>
+```
+And verify
+```
+	git config  user.name
+	git config  user.email
+```
 ## <a name=modifyclonedCode>Update/upload changes on cloned code to new repository</a>
 
 Here you will have to change origin to your created git repository since after git init, you will see origin as where you cloned it from. 
