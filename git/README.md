@@ -418,10 +418,10 @@ Host github.com
     IdentityFile ~/.ssh/id_rsa
     IdentitiesOnly yes
 
-Host gitlab.kpit.com
-    HostName gitlab.kpit.com
+Host gitlab.comp.com
+    HostName gitlab.comp.com
     User git
-    IdentityFile ~/.ssh/gl_kpit_id_ed25519
+    IdentityFile ~/.ssh/gl_comp_id_ed25519
     IdentitiesOnly yes
 ```
 set local user name and emails by going to respective local repositories
