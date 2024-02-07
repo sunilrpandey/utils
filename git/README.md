@@ -72,6 +72,7 @@ One can list other config information
 	ssh-keygen -t rsa -b 4096 -C "your_email@example.com"	 
 	eval "$(ssh-agent -s)"
  	ssh-agent -s # for Windows
+ 	//eval $(ssh-agent) worked on windows using git bash terminal
 
 	ssh-add ~/.ssh/id_rsa
 	```
