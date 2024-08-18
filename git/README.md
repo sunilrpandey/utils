@@ -79,6 +79,9 @@ One can list other config information
 	..and copy it and add it to github's ssh keys.
 	BTW you can copy using 
 	> xcopy -selection clipboard < ~/.ssh/id_rsa.pub
+ 
+ 	> OR xclip -sel c < input_file
+ > 
 
 ## <a name=reposetup>Setup local and remote repository/server</a>
 ### 1. First step 
