@@ -17,6 +17,16 @@ add_library(Library STATIC my_lib.cpp)
 add_executable(Executable learning.cpp)
 target_link_libraries(Executable PUBLIC Library)
 ```
+## Move impl file group to separate folder (my_lib)
+- create my_lib folder.
+- go my_lib filder and create another CMakeLists.text file
+    add_library(Library STATIC "fun_lib.cpp")
+    target_include_directories(Library PUBLIC "./") # is used for including headers
+- add add_subdirectory(lib) in CMakeLists.txt of parent directory
 
-
+## Add Variables to CMakeLists.txt
+```
+set(EXECUTABLE_NAME Executable)
+set(LIBRARY_NAME Library)
+```
 
