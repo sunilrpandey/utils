@@ -33,6 +33,15 @@
 4. Run the executive 
     > ./bazel-bin/hello
 
+    or run 
+    > bazel run //hello-bazel:hello
+
+    You can get detailed build process using -s option along with bazel build
+    > bazel build //hello-bazel:hello -s
+    
+    You can give build options on command line only
+    > bazel build //hello-bazel:hello --copt=o0 -s
+
 ## More...
 ### Dependencies
 #### If target is binary/libarary
