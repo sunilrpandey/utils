@@ -1,0 +1,3 @@
+Current User:
+id -un : This command prints the username of the current user.
+work/$(id -un)/ to have current user name folder inside work folder
