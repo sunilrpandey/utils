@@ -1,4 +1,20 @@
 # Git Tricks
+## Cherry-Pick changes from one branch to another
+```sh
+- go to source branch, or pull reqeust if you want to cherry pick from PR and identify commits , you can do this using
+    git log --oneline as well
+- go to target branch and
+    git cherry-pick <commit-id>
+- If it has conflicts
+    git add <files>
+    do 
+       continue ; git cherry-pick --continue
+    while new changes
+    git push -f
+g    
+
+
+```
 
 ## Show branch name on command prompt.
 
