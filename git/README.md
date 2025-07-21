@@ -229,6 +229,10 @@ Know more about a particular commit
 ```
 - git show <commit_id>
 ```
+To show changes in current feature branch only (exclude mater/main changes)
+```
+- git log origin/master..HEAD
+```
 ### <a name=blame>blame</a>
 To know the history of a file
 ```
