@@ -1,4 +1,9 @@
 # Git Tricks
+
+## Check log from current branch excluding master/main
+```
+git log origin/master..HEAD
+```
 ## Cherry-Pick changes from one branch to another
 ```sh
 - go to source branch, or pull reqeust if you want to cherry pick from PR and identify commits , you can do this using
