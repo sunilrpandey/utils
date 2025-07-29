@@ -1,5 +1,25 @@
 # Git Tricks
 
+## Resolve Conflicts thorugh Re-basing
+Assume 
+Active branch : my_feature_branch
+parent branch : release(can be main/master)
+
+Update parent branch
+    git checkout release
+    git pull
+Return to active branch and bebase it
+    git checkout my_feature_branch
+    git rebase -i release
+    repeat until get conflicts
+        resolve conflicts
+        git add .
+        git rebase --continue
+        -> Save and close the editor, but dont change rebase messgae or commit message before pushing
+        
+    git push -f
+
+
 ## Check log from current branch excluding master/main
 ```
 git log origin/master..HEAD
