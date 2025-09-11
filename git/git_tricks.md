@@ -23,6 +23,10 @@ Return to active branch and bebase it
 ## Check log from current branch excluding master/main
 ```
 git log origin/master..HEAD
+
+or
+
+git log master..HEAD
 ```
 ## Cherry-Pick changes from one branch to another
 ```sh
