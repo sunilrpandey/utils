@@ -1,5 +1,12 @@
 # Git Tricks
 
+## How to work on your team mates PR
+```
+git fetch origin pull/42/head:colleagues_branch
+git checkout colleagues_branch
+git branch -m colleagues_branch my_branch
+git checkout my_branch
+```
 ## Resolve Conflicts thorugh Re-basing
 Assume 
 Active branch : my_feature_branch
