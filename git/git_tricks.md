@@ -8,6 +8,7 @@ git branch -m colleagues_branch my_branch
 git checkout my_branch
 ```
 ## Resolve Conflicts thorugh Re-basing
+```
 Assume 
 Active branch : my_feature_branch
 parent branch : release(can be main/master)
@@ -25,7 +26,7 @@ Return to active branch and bebase it
         -> Save and close the editor, but dont change rebase messgae or commit message before pushing
         
     git push -f
-
+```
 
 ## Check log from current branch excluding master/main
 ```
