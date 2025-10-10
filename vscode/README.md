@@ -10,6 +10,11 @@
 
 
 ## <a name = shortkey>keyboard Shortcuts</a>
+For bookmarks install 'bookmarks' extension by (by Alessandro Fragnani)
+- Place Bookmark : Alt + Ctrl + K 
+- Navigate Forward : Alt + Ctrl + L
+- Navigate Backward : Alt + Ctrl + J
+
 - Copy path of active file : Ctrl+K P 
 - Reveal active file in File Explorer : Ctrl+K R 
 - Show active file in new window/instance : Ctrl+K O 
