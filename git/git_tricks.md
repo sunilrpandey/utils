@@ -1,5 +1,10 @@
 # Git Tricks
 
+## Move file from modified+added state to modified state
+```
+git restore --staged <file_name>
+```
+
 ## How to work on your team mates PR
 ```
 git fetch origin pull/42/head:colleagues_branch
