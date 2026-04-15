@@ -3,6 +3,7 @@
 ## Move file from modified+added state to modified state
 ```
 git restore --staged <file_name>
+git restore --staged .
 ```
 
 ## How to work on your team mates PR
