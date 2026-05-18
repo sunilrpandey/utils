@@ -1,1 +1,13 @@
+log command output 
+0 - stdin
+1 - stdout
+2 - stderr
 
+2>&1 merge stdout/stderr
+
+to file as well as terminal 
+<command> 2>&1 | tee logfile.txt
+
+only terminal 
+<command> 2>&1 or 
+<command> 2>&1 | cat # if you wan to use pip
