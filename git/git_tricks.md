@@ -1,5 +1,10 @@
 # Git Tricks
 
+## git clone with folder having new name
+```
+git clone <.git clone link> <new_folder_name>
+```
+
 ## Move file from modified+added state to modified state
 ```
 git restore --staged <file_name>
