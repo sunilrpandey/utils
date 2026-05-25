@@ -1,5 +1,9 @@
 # Git Tricks
 
+## git clone from hash provided
+```
+git clone -b <branch_name> <provided hash>
+```
 ## git clone with folder having new name
 ```
 git clone <.git clone link> <new_folder_name>
