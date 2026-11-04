@@ -99,3 +99,17 @@ To remove it from git and local system, omit `--cached`.
 ```
 git rm -r -n dirname //-n does dry run and displays files deleted
 ```
+## Make feature branch content back to main branch(parent) ... no history
+```sh
+git fetch origin
+git reset --hard origin/main
+git push --force-with-lease
+```
+## Make feature branch content back to main branch(parent)
+```sh
+git checkout main -- /path/file     // for particular file
+git checkout main -- .   //for all the files
+-> git status shows list of modified file status
+git commit -m "sync to main"
+git push f
+```
