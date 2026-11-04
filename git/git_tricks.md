@@ -111,5 +111,5 @@ git checkout main -- /path/file     // for particular file
 git checkout main -- .   //for all the files
 -> git status shows list of modified file status
 git commit -m "sync to main"
-git push f
+git push
 ```
